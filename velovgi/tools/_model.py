@@ -37,6 +37,29 @@ logger = logging.getLogger(__name__)
 
 
 class VELOVGI(VELOVI):
+    """VELOVGI
+
+    VELOVGI
+    
+    Parameters
+    ----------
+    adata
+        _description_
+    n_hidden 
+        _description_. Defaults to 256.
+    n_latent
+        _description_. Defaults to 10.
+    n_layers
+        _description_. Defaults to 1.
+    dropout_rate
+        _description_. Defaults to 0.1.
+    train_batch_mode
+        _description_. Defaults to "random-batch".
+    gamma_init_data
+        _description_. Defaults to False.
+    linear_decoder
+        _description_. Defaults to False.
+    """
     def __init__(
         self,
         adata: AnnData,
@@ -49,6 +72,18 @@ class VELOVGI(VELOVI):
         linear_decoder: bool = False,
         **model_kwargs,
     ):
+        """__init__
+
+        Args:
+            adata (AnnData): _description_
+            n_hidden (int, optional): _description_. Defaults to 256.
+            n_latent (int, optional): _description_. Defaults to 10.
+            n_layers (int, optional): _description_. Defaults to 1.
+            dropout_rate (float, optional): _description_. Defaults to 0.1.
+            train_batch_mode (Literal[&quot;random, optional): _description_. Defaults to "random-batch".
+            gamma_init_data (bool, optional): _description_. Defaults to False.
+            linear_decoder (bool, optional): _description_. Defaults to False.
+        """
         super().__init__(adata)
 
         self.train_batch_mode = train_batch_mode  # 批次训练模式
@@ -127,6 +162,24 @@ class VELOVGI(VELOVI):
         plan_kwargs: Optional[dict] = None,
         **trainer_kwargs,
     ):
+        """Train the VeloVGAE Model
+
+        Args:
+            batch_mode (Literal[&quot;neighbor&quot;, &quot;cluster&quot;, &quot;random&quot;, &quot;all&quot;], optional): _description_. Defaults to "neighbor".
+            num_neighbors (List, optional): _description_. Defaults to [3, ].
+            lr (float, optional): _description_. Defaults to 1e-2.
+            weight_decay (float, optional): _description_. Defaults to 1e-2.
+            use_gpu (Optional[Union[str, int, bool]], optional): _description_. Defaults to None.
+            train_size (float, optional): _description_. Defaults to 0.9.
+            validation_size (Optional[float], optional): _description_. Defaults to None.
+            batch_size (int, optional): _description_. Defaults to 256.
+            early_stopping (bool, optional): _description_. Defaults to True.
+            gradient_clip_val (float, optional): _description_. Defaults to 10.
+            plan_kwargs (Optional[dict], optional): _description_. Defaults to None.
+
+        Returns:
+            _type_: _description_
+        """
         user_plan_kwargs = (
             plan_kwargs.copy() if isinstance(plan_kwargs, dict) else dict()
         )

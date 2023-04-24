@@ -4,6 +4,12 @@ import pickle
 import scanpy as sc
 
 def write_adata(adata, dirname="tmp"):
+    """Read adata frome dirname
+
+    Args:
+        adata (_type_): _description_
+        dirname (str, optional): _description_. Defaults to "tmp".
+    """
     if not os.path.exists(dirname):
         os.mkdir(dirname)
         print("create %s" % dirname)
@@ -27,6 +33,14 @@ def write_adata(adata, dirname="tmp"):
 
 
 def read_adata(dirname="tmp"):
+    """Write adata to dirname
+
+    Args:
+        dirname (str, optional): _description_. Defaults to "tmp".
+
+    Returns:
+        _type_: _description_
+    """
     if os.path.exists(dirname):
         adata_filename = "%s/adata.h5ad" % dirname
         adata = sc.read_h5ad(adata_filename)

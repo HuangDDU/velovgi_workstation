@@ -6,6 +6,20 @@ from .sample_recover import sample, get_all_index_list, get_w_adjust_normal_list
 
 # 预处理
 def preprocess(adata, n_bnn_neighbors=15, n_knn_neighbors=15, batch_mode="batch", batch_key="batch", batch_pair_list=None, sample_mode=None):
+    """Preprocess, generate multi-batch network
+
+    Args:
+        adata (_type_): _description_
+        n_bnn_neighbors (int, optional): _description_. Defaults to 15.
+        n_knn_neighbors (int, optional): _description_. Defaults to 15.
+        batch_mode (str, optional): _description_. Defaults to "batch".
+        batch_key (str, optional): _description_. Defaults to "batch".
+        batch_pair_list (_type_, optional): _description_. Defaults to None.
+        sample_mode (_type_, optional): _description_. Defaults to None.
+
+    Returns:
+        _type_: _description_
+    """
     scv.pp.filter_and_normalize(adata, min_shared_counts=20, n_top_genes=2000)
     if batch_mode == "batch":
         # 批次间单独建立邻居

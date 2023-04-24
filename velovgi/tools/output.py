@@ -2,6 +2,12 @@ import numpy as np
 import torch
 
 def add_velovi_outputs_to_adata(adata, vae):
+    """Add velocity/rate/t from model to adata
+
+    Args:
+        adata (_type_): adata object
+        vae (_type_): vae model
+    """
     latent_time = vae.get_latent_time(n_samples=25)
     velocities = vae.get_velocity(n_samples=25, velo_statistic="mean")
 

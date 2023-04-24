@@ -168,6 +168,13 @@ def moment_obs_attribute(adata, subsample_adata, attribute, plot=True):
 
 
 def moment_layer_attribute(adata, subsample_adata, attribute="velocity"):
+    """Moment layer attribute, such as velocity matrix
+
+    Args:
+        adata (_type_): _description_
+        subsample_adata (_type_): _description_
+        attribute (str, optional): _description_. Defaults to "velocity".
+    """
     adata.layers[attribute] = np.zeros(adata.shape)
     adata.layers[attribute][adata.uns["sample_recover"]["index_list"]] = subsample_adata.layers[attribute]
     tmp_v = adata.layers[attribute]
