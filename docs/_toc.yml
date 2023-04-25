@@ -13,3 +13,6 @@ parts:
 - caption: TUTORIALS 🕶️
   chapters:
   - file: realease_notes
+- caption: DEVELOPMENT
+  chapters:
+  - file: dev_log/index
