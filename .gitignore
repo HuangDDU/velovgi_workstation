@@ -1,3 +1,7 @@
 /docs/conf.py
 /docs/_build
+<<<<<<< HEAD
 /notebook/lab_server/tmp
+=======
+/notebook/local_pc/tmp/
+>>>>>>> main
