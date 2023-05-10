@@ -3,7 +3,8 @@ from typing import Callable, Iterable, Optional
 import numpy as np
 import torch
 import torch.nn.functional as F
-from scvi._compat import Literal
+# from scvi._compat import Literal
+from typing import Literal
 from scvi.module.base import BaseModuleClass, LossRecorder, auto_move_data
 from scvi.nn import Encoder, FCLayers
 from torch import nn as nn

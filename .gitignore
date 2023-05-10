@@ -1,4 +1,12 @@
 /docs/conf.py
 /docs/_build
+<<<<<<< HEAD
 /notebook/lab_server/tmp
 /notebook/local_pc/tmp/
+=======
+/notebook/local_pc/tmp
+/notebook/local_pc/erythroid_lineage/data
+/notebook/local_pc/erythroid_lineage/log
+/notebook/local_pc/erythroid_lineage/model
+/docs/
+>>>>>>> dev

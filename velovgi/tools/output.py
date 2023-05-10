@@ -16,7 +16,7 @@ def add_velovi_outputs_to_adata(adata, vae):
 
     adata.layers["velocity"] = velocities / scaling
     adata.layers["velocity_u"] = velocities_u / scaling # TODO: 加入unsplcied的速率
-    adata.layers["latent_time_velovi"] = latent_time
+    adata.layers["latent_time_velovgi"] = latent_time
 
     adata.var["fit_alpha"] = vae.get_rates()["alpha"] / scaling
     adata.var["fit_beta"] = vae.get_rates()["beta"] / scaling

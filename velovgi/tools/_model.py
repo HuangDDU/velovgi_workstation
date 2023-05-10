@@ -10,7 +10,8 @@ import torch.nn.functional as F
 from anndata import AnnData
 from joblib import Parallel, delayed
 from scipy.stats import ttest_ind
-from scvi._compat import Literal
+# from scvi._compat import Literal
+from typing import Literal
 from scvi._utils import _doc_params
 from scvi.data import AnnDataManager
 from scvi.data.fields import LayerField, NumericalObsField
@@ -144,9 +145,173 @@ class VELOVGI(VELOVI):
         # 此处的layer与NeighborMiniBatch的num_neighbors相关，保存下来
         self.n_layers = n_layers
         self.init_params_ = self._get_init_params(locals())
+        
 
-    # TODO: 之前是整图训练，现在开始使用Neighbor MiniBatch策略训练
+    # # TODO: 之前是整图训练，现在开始使用Neighbor MiniBatch策略训练
+    # def train(
+    #     self,
+    #     batch_mode: Literal["neighbor", "cluster", "random", "all"] = "neighbor",
+    #     num_neighbors: List = [3, ],  # 与Neighbor MiniBatch策略相关，同时与神经网络层数相关
+    #     max_epochs: Optional[int] = 500,
+    #     lr: float = 1e-2,
+    #     weight_decay: float = 1e-2,
+    #     use_gpu: Optional[Union[str, int, bool]] = None,
+    #     train_size: float = 0.9,
+    #     validation_size: Optional[float] = None,
+    #     batch_size: int = 256,
+    #     early_stopping: bool = True,
+    #     gradient_clip_val: float = 10,
+    #     plan_kwargs: Optional[dict] = None,
+    #     **trainer_kwargs,
+    # ):
+    #     """Train the VeloVGAE Model
+
+    #     Args:
+    #         batch_mode (Literal[&quot;neighbor&quot;, &quot;cluster&quot;, &quot;random&quot;, &quot;all&quot;], optional): _description_. Defaults to "neighbor".
+    #         num_neighbors (List, optional): _description_. Defaults to [3, ].
+    #         lr (float, optional): _description_. Defaults to 1e-2.
+    #         weight_decay (float, optional): _description_. Defaults to 1e-2.
+    #         use_gpu (Optional[Union[str, int, bool]], optional): _description_. Defaults to None.
+    #         train_size (float, optional): _description_. Defaults to 0.9.
+    #         validation_size (Optional[float], optional): _description_. Defaults to None.
+    #         batch_size (int, optional): _description_. Defaults to 256.
+    #         early_stopping (bool, optional): _description_. Defaults to True.
+    #         gradient_clip_val (float, optional): _description_. Defaults to 10.
+    #         plan_kwargs (Optional[dict], optional): _description_. Defaults to None.
+
+    #     Returns:
+    #         _type_: _description_
+    #     """
+    #     user_plan_kwargs = (
+    #         plan_kwargs.copy() if isinstance(plan_kwargs, dict) else dict()
+    #     )
+    #     plan_kwargs = dict(lr=lr, weight_decay=weight_decay, optimizer="AdamW")
+    #     plan_kwargs.update(user_plan_kwargs)
+
+    #     user_train_kwargs = trainer_kwargs.copy()
+    #     trainer_kwargs = dict(gradient_clip_val=gradient_clip_val)
+    #     trainer_kwargs.update(user_train_kwargs)
+
+    #     if batch_mode == "neighbor":
+    #         # TODO: 直接修改为Neighbor采样的Mini-Batch策略
+    #         # print("选择 Neighbor 策略")
+    #         print("choosing neighbor minibatch")
+    #         assert self.n_layers == len(num_neighbors),\
+    #             f"Neighbor MiniBatch parameter 'num_neighbors':{num_neighbors} not math netowrk layers num:{self.n_layers}!"
+    #         data_splitter = NeighborDataSplitter(
+    #             self.adata_manager,
+    #             train_size=train_size,
+    #             validation_size=validation_size,
+    #             num_neighbors=num_neighbors,
+    #             use_gpu=use_gpu,
+    #             batch_size=batch_size
+    #         )
+    #     elif batch_mode == "cluster":
+    #         # TODO: 按照样本聚类划分Mini-Batch策略
+    #         # print("选择 Cluster 策略")
+    #         print("choosing cluster minibatch")
+    #         data_splitter = ClusterDataSplitter(
+    #             self.adata_manager,
+    #             train_size=train_size,
+    #             validation_size=validation_size,
+    #             use_gpu=use_gpu
+    #         )
+    #     else:
+    #         if batch_mode == "all":
+    #             batch_size = self.adata.shape[0]
+    #             # print("选择 All 策略", batch_size)
+    #             print("choosing all minibatch")
+    #         else:
+    #             # print("选择 Random 策略", batch_size)
+    #             print("choosing random minibatch")
+    #         # TODO: 随机样本划分
+    #         data_splitter = RandomDataSplitter(
+    #             self.adata_manager,
+    #             train_size=train_size,
+    #             validation_size=validation_size,
+    #             use_gpu=use_gpu,
+    #             batch_size=batch_size
+    #         )
+
+    #     training_plan = TrainingPlan(self.module, **plan_kwargs)
+
+    #     es = "early_stopping"
+    #     trainer_kwargs[es] = (
+    #         early_stopping if es not in trainer_kwargs.keys() else trainer_kwargs[es]
+    #     )
+    #     # 这里添加日志输出
+    #     runner = TrainRunner(
+    #         self,
+    #         training_plan=training_plan,
+    #         data_splitter=data_splitter,
+    #         max_epochs=max_epochs,
+    #         use_gpu=use_gpu,
+    #         **trainer_kwargs,
+    #     )
+    #     return runner()
+
+    # TODO: 添加了断点训练功能
     def train(
+        self,
+        checkpoint_mode: Literal["only", "checkpoint"] = "only", # 不间断训练或断点训练
+        batch_mode: Literal["neighbor", "cluster", "random", "all"] = "neighbor",
+        num_neighbors: List = [3, ],  # 与Neighbor MiniBatch策略相关，同时与神经网络层数相关
+        max_epochs: Optional[int] = None, # 不同的断点需要的epoch不一样，为了断点训练，这里价格默认的None
+        lr: float = 1e-2,
+        weight_decay: float = 1e-2,
+        use_gpu: Optional[Union[str, int, bool]] = None,
+        train_size: float = 0.9,
+        validation_size: Optional[float] = None,
+        batch_size: int = 256,
+        early_stopping: bool = True,
+        gradient_clip_val: float = 10,
+        plan_kwargs: Optional[dict] = None,
+        **trainer_kwargs,
+    ):
+        if checkpoint_mode=="only" or (not hasattr(self, "train_runner_params_dict")):
+            # 选定不间断训练或断点训练没有runner参数时，都要初始化runner参数
+            print("初始训练，初始化runner参数")
+            # 关于epoch默认初始化
+            if max_epochs == None:
+                max_epochs = 500
+            # TODO: 对于model需要强制初始化
+            self._get_train_runner_params_dict(
+                    batch_mode=batch_mode,
+                    num_neighbors=num_neighbors,
+                    max_epochs=max_epochs,
+                    lr=lr,
+                    weight_decay=weight_decay,
+                    use_gpu=use_gpu,
+                    train_size=train_size,
+                    validation_size=validation_size,
+                    batch_size=batch_size,
+                    early_stopping=early_stopping,
+                    gradient_clip_val=gradient_clip_val,
+                    plan_kwargs=plan_kwargs,
+                    **trainer_kwargs
+                )
+        else:
+            print("断点继续训练")
+            if "logger" in trainer_kwargs.keys():
+                # logger需要更新，方便查看
+                self.trainer_kwargs["logger"] = trainer_kwargs["logger"]
+            if not max_epochs==None:
+                # 不同断点需要的epoch不一样
+                self.train_runner_params_dict["max_epochs"] = max_epochs
+                print("断点的epochs：", self.train_runner_params_dict["max_epochs"])
+        runner = TrainRunner(
+            self,
+            training_plan=self.train_runner_params_dict["training_plan"],
+            data_splitter=self.train_runner_params_dict["data_splitter"],
+            max_epochs=self.train_runner_params_dict["max_epochs"],
+            use_gpu=self.train_runner_params_dict["use_gpu"],
+            **self.trainer_kwargs,
+        )
+        return runner()
+ 
+
+    # 提取传入到runner需要的内容
+    def _get_train_runner_params_dict(
         self,
         batch_mode: Literal["neighbor", "cluster", "random", "all"] = "neighbor",
         num_neighbors: List = [3, ],  # 与Neighbor MiniBatch策略相关，同时与神经网络层数相关
@@ -162,24 +327,6 @@ class VELOVGI(VELOVI):
         plan_kwargs: Optional[dict] = None,
         **trainer_kwargs,
     ):
-        """Train the VeloVGAE Model
-
-        Args:
-            batch_mode (Literal[&quot;neighbor&quot;, &quot;cluster&quot;, &quot;random&quot;, &quot;all&quot;], optional): _description_. Defaults to "neighbor".
-            num_neighbors (List, optional): _description_. Defaults to [3, ].
-            lr (float, optional): _description_. Defaults to 1e-2.
-            weight_decay (float, optional): _description_. Defaults to 1e-2.
-            use_gpu (Optional[Union[str, int, bool]], optional): _description_. Defaults to None.
-            train_size (float, optional): _description_. Defaults to 0.9.
-            validation_size (Optional[float], optional): _description_. Defaults to None.
-            batch_size (int, optional): _description_. Defaults to 256.
-            early_stopping (bool, optional): _description_. Defaults to True.
-            gradient_clip_val (float, optional): _description_. Defaults to 10.
-            plan_kwargs (Optional[dict], optional): _description_. Defaults to None.
-
-        Returns:
-            _type_: _description_
-        """
         user_plan_kwargs = (
             plan_kwargs.copy() if isinstance(plan_kwargs, dict) else dict()
         )
@@ -237,16 +384,16 @@ class VELOVGI(VELOVI):
         trainer_kwargs[es] = (
             early_stopping if es not in trainer_kwargs.keys() else trainer_kwargs[es]
         )
-        # 这里添加日志输出
-        runner = TrainRunner(
-            self,
+
+        # 保存到传入train_runner的属性
+        self.train_runner_params_dict = dict(
             training_plan=training_plan,
             data_splitter=data_splitter,
             max_epochs=max_epochs,
             use_gpu=use_gpu,
-            **trainer_kwargs,
         )
-        return runner()
+        self.trainer_kwargs = trainer_kwargs
+        
 
     def _make_data_loader(
         self,
