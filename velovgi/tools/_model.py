@@ -10,7 +10,8 @@ import torch.nn.functional as F
 from anndata import AnnData
 from joblib import Parallel, delayed
 from scipy.stats import ttest_ind
-from scvi._compat import Literal
+# from scvi._compat import Literal
+from typing import Literal
 from scvi._utils import _doc_params
 from scvi.data import AnnDataManager
 from scvi.data.fields import LayerField, NumericalObsField
@@ -255,7 +256,7 @@ class VELOVGI(VELOVI):
         checkpoint_mode: Literal["only", "checkpoint"] = "only", # 不间断训练或断点训练
         batch_mode: Literal["neighbor", "cluster", "random", "all"] = "neighbor",
         num_neighbors: List = [3, ],  # 与Neighbor MiniBatch策略相关，同时与神经网络层数相关
-        max_epochs: Optional[int] = 500,
+        max_epochs: Optional[int] = None, # 不同的断点需要的epoch不一样，为了断点训练，这里价格默认的None
         lr: float = 1e-2,
         weight_decay: float = 1e-2,
         use_gpu: Optional[Union[str, int, bool]] = None,
@@ -270,6 +271,9 @@ class VELOVGI(VELOVI):
         if checkpoint_mode=="only" or (not hasattr(self, "train_runner_params_dict")):
             # 选定不间断训练或断点训练没有runner参数时，都要初始化runner参数
             print("初始训练，初始化runner参数")
+            # 关于epoch默认初始化
+            if max_epochs == None:
+                max_epochs = 500
             # TODO: 对于model需要强制初始化
             self._get_train_runner_params_dict(
                     batch_mode=batch_mode,
@@ -291,6 +295,10 @@ class VELOVGI(VELOVI):
             if "logger" in trainer_kwargs.keys():
                 # logger需要更新，方便查看
                 self.trainer_kwargs["logger"] = trainer_kwargs["logger"]
+            if not max_epochs==None:
+                # 不同断点需要的epoch不一样
+                self.train_runner_params_dict["max_epochs"] = max_epochs
+                print("断点的epochs：", self.train_runner_params_dict["max_epochs"])
         runner = TrainRunner(
             self,
             training_plan=self.train_runner_params_dict["training_plan"],

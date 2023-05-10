@@ -183,7 +183,7 @@ def moment_layer_attribute(adata, subsample_adata, attribute="velocity"):
     for w_adjust_normal in adata.uns["sample_recover"]["w_adjust_normal_list"]:
         tmp_v = w_adjust_normal@tmp_v
         adata.layers[attribute] = tmp_v
-    if attribute=="velocity":
+    if attribute=="velocity" or attribute=="velocity_u":
         adata.layers[attribute] = adata.layers[attribute].A
 
 
@@ -200,3 +200,11 @@ def moment_obsm_attribute(adata, subsample_adata, attribute="velocity_umap", plo
         adata.obsm[attribute] = tmp_v.A
     if plot:
         scv.pl.velocity_embedding(adata, basis="umap") # 最后一次平滑结果
+
+def moment_recover(adata, subsample_adata):
+    # 暂时只layers里的属性
+    moment_layer_attribute(adata, subsample_adata, "velocity")
+    moment_layer_attribute(adata, subsample_adata, "velocity_u")
+    moment_layer_attribute(adata, subsample_adata, "fit_t")
+
+    # TODO: 后续需要对其他属性平滑
