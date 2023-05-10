@@ -7,4 +7,5 @@
 /notebook/local_pc/erythroid_lineage/log
 /notebook/local_pc/erythroid_lineage/model
 /docs/
-/*__pycache__*
+*__pycache__*
+*.ipynb_checkpoints
