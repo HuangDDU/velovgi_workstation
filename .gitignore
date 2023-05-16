@@ -1,7 +1,7 @@
 /docs/conf.py
 /docs/_build
 /notebook/lab_server/tmp
-/notebook/lab_server/erythroid_lineage
+# /notebook/lab_server/erythroid_lineage
 /notebook/lab_server/erythroid_lineage/data
 /notebook/lab_server/erythroid_lineage/log
 /notebook/lab_server/erythroid_lineage/model
