@@ -1,11 +1,16 @@
 /docs/conf.py
 /docs/_build
 /notebook/lab_server/tmp
+/notebook/lab_server/erythroid_lineage
+/notebook/lab_server/erythroid_lineage/data
+/notebook/lab_server/erythroid_lineage/log
+/notebook/lab_server/erythroid_lineage/model
+/notebook/lab_server/erythroid_lineage/celloracle/data
 /notebook/local_pc/tmp/
-/notebook/local_pc/tmp
 /notebook/local_pc/erythroid_lineage/data
 /notebook/local_pc/erythroid_lineage/log
 /notebook/local_pc/erythroid_lineage/model
 /docs/
 *__pycache__*
 *.ipynb_checkpoints
+/conda
