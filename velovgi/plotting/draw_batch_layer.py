@@ -129,6 +129,7 @@ def draw_batch_layer_embedding(
     batch_key="batch",
     transform_matrix_params={},
     sep = 5,
+    embedding_plot_params={},
     show_edge=False,
     show_velocity=False,
     ax=None,
@@ -164,6 +165,6 @@ def draw_batch_layer_embedding(
         adata.obsm[embedding_transformed_batch_velocity_key] = adata.obsm[velocity_key] @ transform_matrix # 速率箭头也旋转
         scv.pl.velocity_embedding(adata, color=cluster_key, basis=embedding_transformed_batch_key, ax=ax)
 
-    sc.pl.embedding(adata, color=cluster_key, basis=embedding_transformed_batch_key, ax=ax, show=False) # 最后绘制散点
+    sc.pl.embedding(adata, color=cluster_key, basis=embedding_transformed_batch_key, ax=ax, show=False, **embedding_plot_params) # 最后绘制散点
     
     return ax
