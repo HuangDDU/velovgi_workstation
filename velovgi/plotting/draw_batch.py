@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from ..preprocessing.batch_network import get_mask
 import scvelo as scv
 
+
 # 添加了子图绘制的函数
 def draw_batch_circos_ax(adata, batch_key="batch", ticks_interval=None, return_matrix_df=False, ax=None):
     from pycirclize import Circos
@@ -59,7 +60,7 @@ def draw_batch_circos_ax(adata, batch_key="batch", ticks_interval=None, return_m
     if return_matrix_df==True:
         return adjust_matrix_df
     
-
+# 计算两种邻居个数的函数
 def draw_batch_nn_umap(adata, batch_key="batch", cluster_key="clusters", title="batch_nn_umap", save=None):
     array = adata.obs[batch_key]
     batch_list = list(adata.obs[batch_key].cat.categories)

@@ -1,4 +1,4 @@
-velovgi.tl.metric.summary
+﻿velovgi.tl.metric.summary
 =========================
 
 .. automodule:: velovgi.tl.metric.summary
@@ -13,6 +13,8 @@ velovgi.tl.metric.summary
 
    .. autosummary::
    
+      get_metric_total_df
+      get_result
       pre_metric
       summary_metric
    
