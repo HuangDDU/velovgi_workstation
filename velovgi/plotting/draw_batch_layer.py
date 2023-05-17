@@ -127,12 +127,13 @@ def draw_batch_layer_embedding(
     embedding_key="X_umap",
     cluster_key="clusters",
     batch_key="batch",
+    transform_matrix_params={},
+    sep = 5,
     show_edge=False,
     show_velocity=False,
-    sep = None,
     ax=None,
 ):
-    transform_matrix = get_transform_matrix() # 获得变化矩阵
+    transform_matrix = get_transform_matrix(**transform_matrix_params) # 获得变化矩阵
     get_tranformed_batch_embeeding(
         adata,
         transform_matrix,
