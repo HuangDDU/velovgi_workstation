@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
+import plotly.express as px
 
 import scanpy as sc
 import scvelo as scv
@@ -168,3 +170,36 @@ def draw_batch_layer_embedding(
     sc.pl.embedding(adata, color=cluster_key, basis=embedding_transformed_batch_key, ax=ax, show=False, **embedding_plot_params) # 最后绘制散点
     
     return ax
+
+
+def draw_batch_layer_embedding_3d(
+    adata,
+    embedding_key="X_umap",
+    cluster_key="clusters",
+    batch_key="batch",
+    weight=1000,
+    height=800):
+    # 构造数据
+    df = pd.DataFrame()
+    df.index = adata.obs.index
+    df["embedding_x"] = adata.obsm[embedding_key][:, 0]
+    df["embedding_y"] = adata.obsm[embedding_key][:, 1]
+    df[batch_key] =  adata.obs[batch_key]
+    df[cluster_key] = adata.obs[cluster_key]
+
+    fig = px.scatter_3d(df, 
+        x="embedding_x", y="embedding_y", z=batch_key,
+        color=cluster_key, hover_name=batch_key,
+        color_discrete_map=dict(zip(adata.obs[cluster_key].cat.categories, adata.uns["%s_colors"%cluster_key])),
+        category_orders = {
+            cluster_key : list(df[cluster_key].cat.categories),
+            batch_key : list(reversed(list(df[batch_key].cat.categories))) # 批次顺序在纵轴上展示
+            }
+        ) # 此处绘制三维散点图
+
+    fig.update_layout(
+            width = weight,
+            height = height,
+    )
+    # 展示
+    fig.show()
