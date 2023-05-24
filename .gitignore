@@ -38,3 +38,20 @@
 /notebook/local_pc/gastrulation/log
 /notebook/local_pc/gastrulation/model
 
+# cluster_server
+/notebook/cluster_server/erythroid_lineage/cluster_run_log
+/notebook/cluster_server/erythroid_lineage/cluster_script
+/notebook/cluster_server/erythroid_lineage/batch_extract
+/notebook/cluster_server/erythroid_lineage/data
+/notebook/cluster_server/erythroid_lineage/figures
+/notebook/cluster_server/erythroid_lineage/log
+/notebook/cluster_server/erythroid_lineage/model
+
+/notebook/cluster_server/gastrulation/cluster_run_log
+/notebook/cluster_server/gastrulation/cluster_script
+/notebook/cluster_server/gastrulation/batch_extract
+/notebook/cluster_server/gastrulation/data
+/notebook/cluster_server/gastrulation/figures
+/notebook/cluster_server/gastrulation/log
+/notebook/cluster_server/gastrulation/model
+/notebook/cluster_server/gastrulation/tmp
