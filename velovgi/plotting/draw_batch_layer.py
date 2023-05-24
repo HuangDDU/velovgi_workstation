@@ -180,7 +180,7 @@ def draw_batch_layer_embedding_3d(
         show=True,
         size=None,
         opacity=1,
-        weight=1000,
+        width=1000,
         height=800):
     # 构造数据
     df = pd.DataFrame()
@@ -207,8 +207,9 @@ def draw_batch_layer_embedding_3d(
                         }
                         )  # 此处绘制三维散点图
 
+    fig.update_traces(marker=dict(line=dict(width=0))) # 取消边框
     fig.update_layout(
-        width=weight,
+        width=width,
         height=height,
     )
     if show:
