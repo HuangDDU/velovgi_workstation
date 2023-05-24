@@ -173,33 +173,47 @@ def draw_batch_layer_embedding(
 
 
 def draw_batch_layer_embedding_3d(
-    adata,
-    embedding_key="X_umap",
-    cluster_key="clusters",
-    batch_key="batch",
-    weight=1000,
-    height=800):
+        adata,
+        embedding_key="X_umap",
+        cluster_key="clusters",
+        batch_key="batch",
+        show=True,
+        size=None,
+        opacity=1,
+        weight=1000,
+        height=800):
     # 构造数据
     df = pd.DataFrame()
     df.index = adata.obs.index
     df["embedding_x"] = adata.obsm[embedding_key][:, 0]
     df["embedding_y"] = adata.obsm[embedding_key][:, 1]
-    df[batch_key] =  adata.obs[batch_key]
+    df[batch_key] = adata.obs[batch_key]
     df[cluster_key] = adata.obs[cluster_key]
+    if size==None:
+        size = int(20000/df.shape[0])
+        size = 1 if size < 1 else size # 也不能太小了
+    df["size"] = size # 大小
 
-    fig = px.scatter_3d(df, 
-        x="embedding_x", y="embedding_y", z=batch_key,
-        color=cluster_key, hover_name=batch_key,
-        color_discrete_map=dict(zip(adata.obs[cluster_key].cat.categories, adata.uns["%s_colors"%cluster_key])),
-        category_orders = {
-            cluster_key : list(df[cluster_key].cat.categories),
-            batch_key : list(reversed(list(df[batch_key].cat.categories))) # 批次顺序在纵轴上展示
-            }
-        ) # 此处绘制三维散点图
+    fig = px.scatter_3d(df,
+                        x="embedding_x", y="embedding_y", z=batch_key,
+                        color=cluster_key, hover_name=batch_key,
+                        size="size", size_max=size, opacity=opacity,
+                        color_discrete_map=dict(
+                            zip(adata.obs[cluster_key].cat.categories, adata.uns["%s_colors" % cluster_key])),
+                        category_orders={
+                            cluster_key: list(df[cluster_key].cat.categories),
+                            batch_key: list(
+                                reversed(list(df[batch_key].cat.categories)))  # 批次顺序在纵轴上展示
+                        }
+                        )  # 此处绘制三维散点图
 
     fig.update_layout(
-            width = weight,
-            height = height,
+        width=weight,
+        height=height,
     )
-    # 展示
-    fig.show()
+    if show:
+        # 展示
+        fig.show()
+    else:
+        # 不展示，等待用户更新画布
+        return fig
