@@ -29,7 +29,7 @@ cluster_key = "celltype"
 adata
 
 # %%
-# sc.pp.subsample(adata, n_obs=20000)
+sc.pp.subsample(adata, n_obs=20000)
 print(adata)
 
 # %% [markdown]
@@ -55,8 +55,8 @@ knn_mask, bnn_mask, subsample_adata = velovgi.pp.preprocess(adata, sample_mode="
 # %%
 from pytorch_lightning import loggers
 
-max_epochs=100
-# max_epochs=10 # notebook测试的时候调小一点，py文件测试的时候调大一点
+# max_epochs=100
+max_epochs=10 # notebook测试的时候调小一点，py文件测试的时候调大一点
 name = "%d_epoch(max_epochs=%d)"%(max_epochs, max_epochs)
 logger = loggers.TensorBoardLogger(save_dir="./log", name=name) # 构造日志文件
     
