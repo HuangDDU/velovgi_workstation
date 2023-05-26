@@ -7,6 +7,7 @@
 
 # lab_server的notebook
 /notebook/lab_server/tmp
+/notebook/lab_server/notebook
 
 /notebook/lab_server/erythroid_lineage/batch_extract
 /notebook/lab_server/erythroid_lineage/data
