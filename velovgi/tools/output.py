@@ -1,5 +1,9 @@
 import numpy as np
 import torch
+from torch_geometric import seed_everything
+
+import anndata as ad
+import scanpy as sc
 
 def add_velovi_outputs_to_adata(adata, vae):
     """Add velocity/rate/t from model to adata
@@ -29,3 +33,35 @@ def add_velovi_outputs_to_adata(adata, vae):
     ) * scaling
     adata.layers["fit_t"] = latent_time.values * scaling[np.newaxis, :]
     adata.var['fit_scaling'] = 1.0
+
+# def get_latent_umap(adata, model, cluster_key="clusters", batch_key="batch_key", latent_key="X_latent_umap", random_seed=0):
+#     # 提取隐变量，构造AnnData
+#     latent_representation = model.get_latent_representation(adata)
+#     latent_adata = ad.AnnData(latent_representation)
+#     if random_seed:
+#         from torch_geometric import seed_everything
+#         seed = 0
+#         seed_everything(seed)
+#     # 执行scanpy的umap
+#     latent_adata.obsm["X_pca"] = latent_adata.X.copy()
+#     sc.pp.neighbors(latent_adata)
+#     sc.tl.umap(latent_adata)
+#     # 保存结果
+#     adata.obsm[latent_key] = latent_adata.obsm["X_umap"]
+#     return adata
+
+def get_latent_umap(adata, model, latent_key="X_latent", latent_umap_key="X_latent_umap", random_seed=0):
+    # 提取隐变量，构造AnnData
+    latent_representation = model.get_latent_representation(adata)
+    latent_adata = ad.AnnData(latent_representation)
+    if random_seed:
+        seed_everything(random_seed)
+    # 执行scanpy的umap
+    latent_adata.obsm["X_pca"] = latent_adata.X.copy()
+    sc.pp.neighbors(latent_adata)
+    sc.tl.umap(latent_adata)
+    # 保存结果
+    adata.obsm[latent_key] = latent_representation
+    adata.obsm[latent_umap_key] = latent_adata.obsm["X_umap"]
+    return adata
+

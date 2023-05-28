@@ -64,6 +64,7 @@ class VELOVGI(VELOVI):
     def __init__(
         self,
         adata: AnnData,
+        nn_type: Literal["FC", "GCN", "GIN", "GAT"] = "GCN",  # 此处选择图卷积层的方式
         n_hidden: int = 256,
         n_latent: int = 10,
         n_layers: int = 1,
@@ -120,6 +121,7 @@ class VELOVGI(VELOVI):
 
         self.module = VELOVGAE(
             n_input=self.summary_stats["n_vars"],
+            nn_type=nn_type,
             n_hidden=n_hidden,
             n_latent=n_latent,
             n_layers=n_layers,
