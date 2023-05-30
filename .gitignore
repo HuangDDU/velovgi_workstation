@@ -9,6 +9,7 @@
 /notebook/lab_server/tmp
 /notebook/lab_server/test_notebook
 
+/notebook/lab_server/erythroid_lineage_bak
 /notebook/lab_server/erythroid_lineage/batch_extract
 /notebook/lab_server/erythroid_lineage/data
 /notebook/lab_server/erythroid_lineage/figures
@@ -16,6 +17,7 @@
 /notebook/lab_server/erythroid_lineage/model
 /notebook/lab_server/erythroid_lineage/celloracle/data
 
+/notebook/lab_server/gastrulation_bak
 /notebook/lab_server/gastrulation/batch_extract
 /notebook/lab_server/gastrulation/data
 /notebook/lab_server/gastrulation/figures
@@ -34,6 +36,7 @@
 /notebook/local_pc/erythroid_lineage/log
 /notebook/local_pc/erythroid_lineage/model
 
+/notebook/local_pc/gastrulation_bak
 /notebook/local_pc/gastrulation/batch_extract
 /notebook/local_pc/gastrulation/data
 /notebook/local_pc/gastrulation/figures
