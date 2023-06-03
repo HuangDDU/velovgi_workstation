@@ -57,6 +57,7 @@
 /notebook/cluster_server/erythroid_lineage/figures
 /notebook/cluster_server/erythroid_lineage/log
 /notebook/cluster_server/erythroid_lineage/model
+/notebook/cluster_server/erythroid_lineage/0.调参/results
 
 /notebook/cluster_server/gastrulation/cluster_run_log
 /notebook/cluster_server/gastrulation/cluster_script
@@ -66,3 +67,4 @@
 /notebook/cluster_server/gastrulation/log
 /notebook/cluster_server/gastrulation/model
 /notebook/cluster_server/gastrulation/tmp
+/notebook/cluster_server/gastrulation/0.调参/results
