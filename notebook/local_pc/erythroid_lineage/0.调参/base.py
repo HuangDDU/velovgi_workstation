@@ -6,7 +6,7 @@
 
 # %%
 import sys
-sys.path = ["../../.."] + sys.path # 切换到项目目录下
+sys.path = ["../../../../"] + sys.path # 切换到项目目录下
 
 import scanpy as sc
 import scvelo as scv
