@@ -65,7 +65,7 @@ def draw_batch_layer(
         batch = batch_list[i]
         tmp_xy_transformed = xy_transformed - (0, sep*i)
         text_pos = (tmp_xy_transformed[0] + tmp_xy_transformed[-1]) / 2 - (1, 0) # TODO: 这里批次的文字说明位置还需要调整
-        plt.text(text_pos[0], text_pos[1], batch, size=15) # 批次的文字说明绘制
+        ax.text(text_pos[0], text_pos[1], batch, size=15) # 批次的文字说明绘制，注意位置
         ax.fill(tmp_xy_transformed[:, 0], tmp_xy_transformed[:, 1], "#00000011") # 每个批次的平行四边形平面绘制
     
     return ax
@@ -77,7 +77,8 @@ def draw_edge(
     embedding_key="X_umap",
     cluster_key="clusters",
     batch_key="batch",
-    neighbor_key="connectivities"
+    neighbor_key="connectivities",
+    ax=None
 ):
     from scipy.sparse import coo_matrix
 
@@ -97,7 +98,7 @@ def draw_edge(
     # edge_color_list = ["red" if i==True else "black" for i in (source != target)] # TODO: 这里颜色需要可以调整
     edge_color_list = ["grey" if i==True else "black" for i in (source != target)]
     style_list = ["-." if i==True else "-" for i in (source != target)]
-    nx.draw_networkx_edges(G, pos, edgelist=edges,width=0.5 ,edge_color=edge_color_list, style=style_list)
+    nx.draw_networkx_edges(G, pos, edgelist=edges,width=0.5 ,edge_color=edge_color_list, style=style_list, ax=ax)
 
 # 自定义的速率绘制函数
 def draw_velocity(
@@ -157,7 +158,7 @@ def draw_batch_layer_embedding(
     
     embedding_transformed_batch_key = "%s_transformed_batch"%embedding_key
     if show_edge:
-        draw_edge(adata, embedding_key=embedding_transformed_batch_key, cluster_key=cluster_key, batch_key=batch_key)
+        draw_edge(adata, embedding_key=embedding_transformed_batch_key, cluster_key=cluster_key, batch_key=batch_key, ax=ax)
     if show_velocity:
         # 使用自己写的函数
         # draw_velocity(adata, embedding_key=embedding_transformed_batch_key, cluster_key=cluster_key, ax=ax) 
