@@ -50,6 +50,7 @@
 /notebook/local_pc/gastrulation/model
 
 # cluster_server
+/notebook/cluster_server_deprecated
 /notebook/cluster_server/erythroid_lineage/cluster_run_log
 /notebook/cluster_server/erythroid_lineage/cluster_script
 /notebook/cluster_server/erythroid_lineage/batch_extract
