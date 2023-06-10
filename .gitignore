@@ -30,6 +30,7 @@
 
 
 # local_pc的notebook
+/notebook/local_pc_deprecated
 /notebook/local_pc/tmp/
 /notebook/local_pc/dev_notebook/
 
@@ -41,6 +42,7 @@
 /notebook/local_pc/erythroid_lineage/kegg
 /notebook/local_pc/erythroid_lineage/log
 /notebook/local_pc/erythroid_lineage/model
+/notebook/local_pc/erythroid_lineage/tune
 
 /notebook/local_pc/gastrulation_bak
 /notebook/local_pc/gastrulation/batch_extract
