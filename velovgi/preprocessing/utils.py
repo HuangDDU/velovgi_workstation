@@ -32,7 +32,7 @@ def preprocess_deprecated(adata, n_bnn_neighbors=15, n_knn_neighbors=15, batch_m
         return knn_mask, bnn_mask, subsample_adata
     
 
-def preprocess(adata, n_bnn_neighbors=15, n_knn_neighbors=15, batch_mode="batch", batch_key="batch", batch_pair_list=None, sample_mode=None, is_ot=True):
+def preprocess(adata, n_bnn_neighbors=15, n_knn_neighbors=15, batch_mode="batch", batch_key="batch", batch_pair_list=None, sample_mode="random", is_ot=True):
 
     scv.pp.filter_and_normalize(adata, min_shared_counts=20, n_top_genes=2000)
     if batch_mode == "batch":
