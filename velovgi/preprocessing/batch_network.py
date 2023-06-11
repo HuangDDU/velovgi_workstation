@@ -7,6 +7,7 @@ import torch
 
 import scanpy as sc
 from scvelo.preprocessing.neighbors import _get_rep, _set_pca, get_duplicate_cells
+from scvelo.preprocessing.neighbors import _set_neighbors_data
 from scvelo import logging as logg
 
 
@@ -150,8 +151,30 @@ def neighbor(adata,
     adata_concat.obsp["connectivities"] = bmat(connectivities_list).A # 按照位置拼接稀疏矩阵， 后续需要变序号，所以这里转成numpy矩阵
     adata_concat.obsp["distances"] = bmat(distances_list).A
     adata_concat = adata_concat[adata.obs.index]
-    adata.obsp["connectivities"] = csr_matrix(adata_concat.obsp["connectivities"])
-    adata.obsp["distances"] = csr_matrix(adata_concat.obsp["distances"])
+
+    # adata.obsp["connectivities"] = csr_matrix(adata_concat.obsp["connectivities"])
+    # adata.obsp["distances"] = csr_matrix(adata_concat.obsp["distances"])
+
+    # 构造Neighbor对象
+    class Neighbor():
+        def __init__(self, indices, distances, connectivities):
+            self.knn_indices = indices
+            self.distances = distances
+            self.connectivities = connectivities
+        
+    n = n_knn_neighbors + n_bnn_neighbors
+    indices = np.zeros((adata.shape[0], n)) # TODO: 暂时先不管了
+    distances = csr_matrix(adata_concat.obsp["distances"])
+    connectivities =  csr_matrix(adata_concat.obsp["connectivities"])
+    neighbors = Neighbor(indices, distances, connectivities)
+    _set_neighbors_data(adata,
+                        neighbors,
+                        n_neighbors=n_knn_neighbors + n_bnn_neighbors,
+                        method="bnn",
+                        metric=metric,
+                        n_pcs=n_pcs,
+                        use_rep=use_rep,
+                        )
 
     return batch_pair_list
 
