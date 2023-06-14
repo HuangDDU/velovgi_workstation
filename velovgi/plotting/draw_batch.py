@@ -1,11 +1,32 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 from ..preprocessing.batch_network import get_mask
 import scvelo as scv
 
+# 绘制批次间相关性的函数
+def draw_batch_correlation(adata, batch_key="batch", vmin=0.5, vmax=1):
+    batch_list = list(adata.obs[batch_key].cat.categories)
+    adata_list = []
+    for batch in batch_list:
+        tmp_adata = adata[adata.obs[batch_key]==batch]
+        adata_list.append(tmp_adata)
 
+    # 获得平均值表达矩阵
+    avg_exp_df = pd.DataFrame(index = list(adata.var.index))
+    for i in range(len(adata_list)):
+        batch = batch_list[i] # 样本名称
+        adata = adata_list[i] # 样本对象
+        avg_exp_df[batch] = adata.X.toarray().mean(axis=0) # 所有细胞的平均表达
+    # 利用平均表达值计算相关性矩阵
+    correlation_matrix = np.corrcoef(avg_exp_df.T)
+    df = pd.DataFrame(correlation_matrix, index= batch_list, columns = batch_list)
+    # 绘图
+    sns.heatmap(df, square=True, vmin=vmin, vmax=vmax, fmt=".3f",
+                linewidth=0.5, annot=True, cmap="RdBu_r")
+    
 # 添加了子图绘制的函数
 def draw_batch_circos_ax(adata, batch_key="batch", ticks_interval=None, return_matrix_df=False, ax=None):
     from pycirclize import Circos
