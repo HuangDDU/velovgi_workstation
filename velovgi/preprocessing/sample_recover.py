@@ -144,9 +144,9 @@ def get_w_adjust_normal_list(adata, all_index_list):
         w_adjust_normal = inv_d_adjust @ w_adjust  # 归一化的权重矩阵
         # print(w_adjust_normal.A)
         w_adjust_normal_list.append(w_adjust_normal)
-        adata.uns["sample_recover"]["w_adjust_normal_list"] = w_adjust_normal_list
 
-        # print("===============")
+    adata.uns["sample_recover"]["w_adjust_normal_list"] = w_adjust_normal_list
+    # print("===============")
 
     return w_adjust_normal_list
 
