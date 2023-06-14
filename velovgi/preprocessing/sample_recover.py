@@ -122,7 +122,7 @@ def get_all_index_list(adata, index_list, threshold=0.98, mode="threshold", max_
     return all_index_list, v_bool_array
 
 
-def get_w_adjust_normal_list(adata, all_index_list):
+def get_w_adjust_normal_list_deprecated(adata, all_index_list):
     n = adata.shape[0]
     w = adata.obsp["connectivities"]
     w_adjust_normal_list = []
@@ -147,6 +147,31 @@ def get_w_adjust_normal_list(adata, all_index_list):
 
     adata.uns["sample_recover"]["w_adjust_normal_list"] = w_adjust_normal_list
     # print("===============")
+
+    return w_adjust_normal_list
+
+# 这里改进了，使用展开的矩阵
+def get_w_adjust_normal_list(adata, all_index_list):
+    n = adata.shape[0]
+    w = adata.obsp["connectivities"].A
+    w_adjust_normal_list = []
+
+    for tmp_index_list in all_index_list:
+        w_adjust = np.zeros(w.shape)  # 调整的权重矩阵
+        inv_d_adjust = np.zeros(w.shape)  # 调整的权重矩阵对应度矩阵求逆
+
+        w_adjust[:, tmp_index_list] = w[:, tmp_index_list]  # 没有恢复过的细胞进行聚合
+        w_adjust[tmp_index_list, :] = 0  # 恢复过的细胞保持不变
+        w_adjust[tmp_index_list, tmp_index_list] = 1
+
+        inv_degree_array = 1 / w_adjust.sum(axis=1)
+        inv_d_adjust[range(n), range(n)] = inv_degree_array  # 度矩阵取逆
+
+        w_adjust_normal = inv_d_adjust @ w_adjust  # 归一化的权重矩阵
+        w_adjust_normal = csr_matrix(w_adjust_normal)
+        w_adjust_normal_list.append(w_adjust_normal)
+
+    adata.uns["sample_recover"]["w_adjust_normal_list"] = w_adjust_normal_list
 
     return w_adjust_normal_list
 
