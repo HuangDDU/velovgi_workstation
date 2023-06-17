@@ -6,6 +6,7 @@
 /conda
 
 # lab_server的notebook
+/notebook/lab_server_deprecated
 /notebook/lab_server/tmp
 /notebook/lab_server/test_notebook
 
