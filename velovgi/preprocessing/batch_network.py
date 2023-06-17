@@ -73,11 +73,19 @@ def neighbor(adata,
              batch_pair_list=None,
              mnn=True, # 以后再说用这个
              is_ot=True,
+             ratio_knn = None,
+             ratio_bnn = None,
              n_pcs=None,
              use_rep=None,
              use_highly_variable=True,
              metric="euclidean"
              ):
+    # 后续可能需要按照比例设置邻居数量，这里提前设置最大值
+    max_n_knn_neighbors = 30
+    max_n_bnn_neighbors = 50
+    # actual_max_n_knn_neighbors = 0
+    # actual_max_n_bnn_neighbors = 0
+
     # 开始确定用哪个数据
     use_rep = _get_rep(adata=adata, use_rep=use_rep, n_pcs=n_pcs)
     if use_rep == "X_pca":
@@ -103,6 +111,13 @@ def neighbor(adata,
     # 各个批次内部的AnnData分别做KNN
     for i in range(len(batch_list)):
         tmp_adata = adata_list[i]
+        if not (ratio_knn == None):
+            # 按照比例设置批次内邻居数量
+            n_knn_neighbors = int(tmp_adata.shape[0] * ratio_knn)
+            n_knn_neighbors = min(n_knn_neighbors, max_n_knn_neighbors)
+            n_knn_neighbors = max(n_knn_neighbors, 1)
+            # actual_max_n_knn_neighbors = max(actual_max_n_knn_neighbors, n_knn_neighbors)
+            logg.info(f"{batch_list[i]} n_knn_neighbors: {n_knn_neighbors}")
         sc.pp.neighbors(tmp_adata,
                         n_neighbors=n_knn_neighbors,
                         n_pcs=n_pcs,
@@ -122,6 +137,15 @@ def neighbor(adata,
         # X, Y = adata1.X, adata2.X
         X = adata1.X if use_rep == "X" else adata1.obsm[use_rep]
         Y = adata2.X if use_rep == "X" else adata2.obsm[use_rep]
+        if not (ratio_bnn == None):
+            # 按照比例设置批次间邻居数量
+            n1 = adata1.shape[0]
+            n2 = adata2.shape[0]
+            n_bnn_neighbors = int((n1 + n2)/2 *  ratio_bnn)
+            n_bnn_neighbors = min(n_bnn_neighbors, max_n_bnn_neighbors)
+            n_bnn_neighbors = max(n_bnn_neighbors, 1)
+            # actual_max_n_bnn_neighbors = max(actual_max_n_bnn_neighbors, n_bnn_neighbors)
+            logg.info(f"pair {batch_pair} n_bnn_neighbors: {n_bnn_neighbors}")
         if (n_bnn_neighbors > adata1.shape[0]) or (n_bnn_neighbors > adata2.shape[0]):
             k = min(adata1.shape[0], adata2.shape[0])
             logg.info(f"pair {batch_pair} cells not enough, k={k}", r=True)
@@ -162,14 +186,16 @@ def neighbor(adata,
             self.distances = distances
             self.connectivities = connectivities
         
-    n = n_knn_neighbors + n_bnn_neighbors
-    indices = np.zeros((adata.shape[0], n)) # TODO: 暂时先不管了
+    n_neighbors = n_knn_neighbors + n_bnn_neighbors
+    if not (ratio_bnn == None):
+        n_neighbors = max_n_bnn_neighbors + max_n_bnn_neighbors
+    indices = np.zeros((adata.shape[0], n_neighbors)) # TODO: 暂时先不管了
     distances = csr_matrix(adata_concat.obsp["distances"])
     connectivities =  csr_matrix(adata_concat.obsp["connectivities"])
     neighbors = Neighbor(indices, distances, connectivities)
     _set_neighbors_data(adata,
                         neighbors,
-                        n_neighbors=n_knn_neighbors + n_bnn_neighbors,
+                        n_neighbors=n_neighbors,
                         method="bnn",
                         metric=metric,
                         n_pcs=n_pcs,

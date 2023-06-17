@@ -32,12 +32,12 @@ def preprocess_deprecated(adata, n_bnn_neighbors=15, n_knn_neighbors=15, batch_m
         return knn_mask, bnn_mask, subsample_adata
     
 
-def preprocess(adata, n_bnn_neighbors=15, n_knn_neighbors=15, batch_mode="batch", batch_key="batch", batch_pair_list=None, sample_mode="random", is_ot=True):
+def preprocess(adata, n_bnn_neighbors=15, n_knn_neighbors=15, batch_mode="batch", batch_key="batch", batch_pair_list=None, sample_mode="random", is_ot=True, ratio_knn = None, ratio_bnn = None,):
 
     scv.pp.filter_and_normalize(adata, min_shared_counts=20, n_top_genes=2000)
     if batch_mode == "batch":
         # 批次间单独建立邻居
-        batch_pair_list = neighbor(adata, n_bnn_neighbors=n_bnn_neighbors, n_knn_neighbors=n_knn_neighbors, batch_key=batch_key, batch_pair_list=batch_pair_list, is_ot=is_ot)
+        batch_pair_list = neighbor(adata, n_bnn_neighbors=n_bnn_neighbors, n_knn_neighbors=n_knn_neighbors, batch_key=batch_key, batch_pair_list=batch_pair_list, is_ot=is_ot, ratio_knn=ratio_knn, ratio_bnn=ratio_bnn)
     else:
         logg.info("using scvelo neighbors...")
     scv.pp.moments(adata, n_pcs=30, n_neighbors=n_bnn_neighbors + n_knn_neighbors)
