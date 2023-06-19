@@ -1,12 +1,14 @@
 import numpy as np
+import seaborn as sns
+
 import scvelo as scv
 
 
 from .metric.eval_utils import inner_cluster_coh
 
-def get_adata_velocity_similarity(adata, cluster_name, cluster_key="clusters"):
+def get_adata_velocity_similarity(adata, cluster_name, cluster_key="clusters", basis="umap"):
     from sklearn.metrics.pairwise import cosine_similarity
-    velocity_array = adata.obsm["velocity_umap"][adata.obs[cluster_key] == cluster_name]  # 此处较之前做了修改，提取特定簇的速率矩阵
+    velocity_array = adata.obsm["velocity_%s"%basis][adata.obs[cluster_key] == cluster_name]  # 此处较之前做了修改，提取特定簇的速率矩阵
     avg_velocity_array = velocity_array.mean(axis=0)  # 该聚类的平均速率向量
     avg_velocity_array = avg_velocity_array[np.newaxis, :].repeat(velocity_array.shape[0], axis=0)  # 向量转化为矩阵，方便后续运算
 
@@ -24,7 +26,7 @@ def test_cluster_velocity_similarity(adata, cluster_key="clusters"):
     return similarity_dict
 
 
-def get_sub_recluster(adata, cluster_name, k=2, sub_recluster_key="sub_recluster", cluster_key="clusters",
+def get_sub_recluster(adata, cluster_name, k=2, sub_recluster_key="sub_recluster", cluster_key="clusters", basis="umap",
                       alpha=1.2, beta=0.8):
     from sklearn.preprocessing import StandardScaler, MinMaxScaler  # 预处理时特征归一化
     from sklearn.cluster import KMeans  # KMeans聚类
@@ -36,8 +38,8 @@ def get_sub_recluster(adata, cluster_name, k=2, sub_recluster_key="sub_recluster
     sub_index2index = dict(list(enumerate(np.where(bool_series)[0])))  # 关注某群中的下表到adata中的下标映射
 
     # 特征拼接
-    reduction_visualization_features = adata.obsm["X_umap"][bool_series]  # 降维可视化特征
-    velocity_features = adata.obsm["velocity_umap"][bool_series]  # 低维速率特征
+    reduction_visualization_features = adata.obsm["X_%s"%basis][bool_series]  # 降维可视化特征
+    velocity_features = adata.obsm["velocity_%s"%basis][bool_series]  # 低维速率特征
     merged_fetureas = np.concatenate([reduction_visualization_features, velocity_features], axis=1)  # 特征拼接
     # TODO: 此处特征归一化预处理
     scaler = StandardScaler().fit(merged_fetureas)
@@ -61,12 +63,12 @@ def get_sub_recluster(adata, cluster_name, k=2, sub_recluster_key="sub_recluster
 
 
 # 对特定簇尝试多个k寻找其谱系亚群
-def test_k_sub_recluster(adata, cluster_name, max_k=5, plot=True, visualization_mode="global"):
+def test_k_sub_recluster(adata, cluster_name, max_k=5, plot=True, visualization_mode="global", basis="umap"):
     max_score = 0
     max_score_k = 2
     for k in range(2, max_k + 1):
         sub_recluster_key = "sub_recluster(key=%d)" % k
-        score = get_sub_recluster(adata, cluster_name, k=k, sub_recluster_key=sub_recluster_key)  # 计算指标
+        score = get_sub_recluster(adata, cluster_name, k=k, sub_recluster_key=sub_recluster_key, basis=basis)  # 计算指标
         if score > max_score:
             # 记录指标最大的k值
             max_score = score
@@ -83,11 +85,13 @@ def test_k_sub_recluster(adata, cluster_name, max_k=5, plot=True, visualization_
                 scv.pl.velocity_embedding(adata, color=sub_recluster_key,
                                           palette=palette,
                                           arrow_length=arrow_length,
+                                          basis=basis,
                                           dpi=300)  # 全局可视化
             else:
-                scv.pl.velocity_embedding(adata[adata.obs["clusters"] == cluster_name], basis="umap",
+                scv.pl.velocity_embedding(adata[adata.obs["clusters"] == cluster_name],
                                           color=sub_recluster_key,
                                           arrow_length=arrow_length,
+                                          basis=basis,
                                           dpi=300)  # 当前簇的可视化
     return max_score_k
 
