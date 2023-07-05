@@ -4,6 +4,7 @@ from torch_geometric import seed_everything
 
 import anndata as ad
 import scanpy as sc
+import scanpy.external as sce
 
 def add_velovi_outputs_to_adata(adata, vae):
     """Add velocity/rate/t from model to adata
@@ -50,18 +51,51 @@ def add_velovi_outputs_to_adata(adata, vae):
 #     adata.obsm[latent_key] = latent_adata.obsm["X_umap"]
 #     return adata
 
+# def get_latent_umap(adata, model, latent_key="X_latent", latent_umap_key="X_latent_umap", random_seed=0):
+#     # 提取隐变量，构造AnnData
+#     latent_representation = model.get_latent_representation(adata)
+#     latent_adata = ad.AnnData(latent_representation)
+#     if random_seed:
+#         seed_everything(random_seed)
+#     # 执行scanpy的umap
+#     latent_adata.obsm["X_pca"] = latent_adata.X.copy()
+#     sc.pp.neighbors(latent_adata)
+#     sc.tl.umap(latent_adata)
+#     # 保存结果
+#     adata.obsm[latent_key] = latent_representation
+#     adata.obsm[latent_umap_key] = latent_adata.obsm["X_umap"]
+#     return adata
+
+
+# 向后兼容
 def get_latent_umap(adata, model, latent_key="X_latent", latent_umap_key="X_latent_umap", random_seed=0):
+    return get_latent_embedding(adata, model, embedding_method="umap",latent_key=latent_key, random_seed=random_seed)
+
+
+# 指定方法对隐变量降维
+def get_latent_embedding(adata, model, embedding_method="umap",latent_key="X_latent", random_seed=0):
+    latent_embedding_key = "%s_%s"%(latent_key, embedding_method)
     # 提取隐变量，构造AnnData
     latent_representation = model.get_latent_representation(adata)
     latent_adata = ad.AnnData(latent_representation)
     if random_seed:
         seed_everything(random_seed)
-    # 执行scanpy的umap
-    latent_adata.obsm["X_pca"] = latent_adata.X.copy()
-    sc.pp.neighbors(latent_adata)
-    sc.tl.umap(latent_adata)
+    
+    # 选择降维方法对隐变量降维
+    if embedding_method=="umap":
+        # 执行scanpy的umap
+        latent_adata.obsm["X_pca"] = latent_adata.X.copy()
+        sc.pp.neighbors(latent_adata)
+        sc.tl.umap(latent_adata)
+    elif embedding_method=="pca":
+        sc.tl.pca(latent_adata)
+    elif embedding_method=="tsne":
+        sc.tl.tsne(latent_adata)
+    elif embedding_method=="phate":
+        sce.tl.phate(latent_adata)
+        
     # 保存结果
     adata.obsm[latent_key] = latent_representation
-    adata.obsm[latent_umap_key] = latent_adata.obsm["X_umap"]
+    adata.obsm[latent_embedding_key] = latent_adata.obsm["X_%s"%embedding_method]
     return adata
 
