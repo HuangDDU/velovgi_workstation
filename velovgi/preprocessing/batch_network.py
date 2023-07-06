@@ -10,6 +10,7 @@ from scvelo.preprocessing.neighbors import _get_rep, _set_pca, get_duplicate_cel
 from scvelo.preprocessing.neighbors import _set_neighbors_data
 from scvelo import logging as logg
 
+from scanpy.neighbors import _get_indices_distances_from_dense_matrix
 
 # M为转移矩阵时，值越小表示结点越相似，largest为True表示寻找最高概率转移的结点
 # M为距离矩阵时，值越大表示结点越相似，largest为False表示寻找最近邻的结点
@@ -189,7 +190,17 @@ def neighbor(adata,
     n_neighbors = n_knn_neighbors + n_bnn_neighbors
     if not (ratio_bnn == None):
         n_neighbors = max_n_bnn_neighbors + max_n_bnn_neighbors
-    indices = np.zeros((adata.shape[0], n_neighbors)) # TODO: 暂时先不管了
+        
+    # indices = np.zeros((adata.shape[0], n_neighbors)) # TODO: 暂时先不管了
+    # 重新计算indices，后续VeloAE的指标需要
+    distance = adata_concat.obsp["distances"]
+    distance = np.where(distance>0, distance, np.inf)
+    np.fill_diagonal(distance, 0) # 对角线填充为0
+    # 重新计算indices，调整格式
+    indices, nn_distances = _get_indices_distances_from_dense_matrix(distance, n_neighbors)
+    # nn_distances = np.where(nn_distances!=np.inf, nn_distances, 0)
+    indices = np.where(nn_distances!=np.inf, indices, -1)
+
     distances = csr_matrix(adata_concat.obsp["distances"])
     connectivities =  csr_matrix(adata_concat.obsp["connectivities"])
     neighbors = Neighbor(indices, distances, connectivities)
