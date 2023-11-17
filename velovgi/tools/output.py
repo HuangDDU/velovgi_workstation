@@ -92,7 +92,7 @@ def get_latent_embedding(adata, model, embedding_method="umap",latent_key="X_lat
     elif embedding_method=="tsne":
         sc.tl.tsne(latent_adata)
     elif embedding_method=="phate":
-        sce.tl.phate(latent_adata)
+        sce.tl.phate(latent_adata, random_state=random_seed)
         
     # 保存结果
     adata.obsm[latent_key] = latent_representation

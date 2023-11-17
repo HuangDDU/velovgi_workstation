@@ -32,6 +32,37 @@ def preprocess_deprecated(adata, n_bnn_neighbors=15, n_knn_neighbors=15, batch_m
         return knn_mask, bnn_mask, subsample_adata
     
 
+# 预处理调参
+def preprocess2(adata, n_bnn_neighbors=15, n_knn_neighbors=15, batch_mode="batch", batch_key="batch", batch_pair_list=None, sample_mode="random", is_ot=True, ratio_knn = None, ratio_bnn = None,):
+
+    # TODO: 这里的预处理尝试更改
+    # scv.pp.filter_and_normalize(adata, min_shared_counts=20, n_top_genes=2000)
+    # 使用scanpy预处理
+    print("使用scanpy包的预处理")
+    sc.pp.normalize_total(adata, target_sum=1e4)
+    sc.pp.log1p(adata)
+    sc.pp.highly_variable_genes(adata, n_top_genes=2000)
+    adata = adata[:, adata.var.highly_variable] # 这一步由于参数引用不会改变你原本参数
+    sc.pp.scale(adata) # 这一步很对于结果关键
+    sc.tl.pca(adata)
+
+    if batch_mode == "batch":
+        # 批次间单独建立邻居
+        batch_pair_list = neighbor(adata, n_bnn_neighbors=n_bnn_neighbors, n_knn_neighbors=n_knn_neighbors, batch_key=batch_key, batch_pair_list=batch_pair_list, is_ot=is_ot, ratio_knn=ratio_knn, ratio_bnn=ratio_bnn)
+    else:
+        logg.info("using scvelo neighbors...")
+    scv.pp.moments(adata, n_pcs=30, n_neighbors=n_bnn_neighbors + n_knn_neighbors)
+    if sample_mode == None:
+        return adata
+    else:
+        # 执行抽样
+        subsample_adata, index_list = sample(adata, mode=sample_mode)
+        # 计算相关矩阵
+        all_index_list, v_bool_array = get_all_index_list(adata, index_list)
+        w_adjust_normal_list = get_w_adjust_normal_list(adata, all_index_list)
+        return subsample_adata, adata
+
+
 def preprocess(adata, n_bnn_neighbors=15, n_knn_neighbors=15, batch_mode="batch", batch_key="batch", batch_pair_list=None, sample_mode="random", is_ot=True, ratio_knn = None, ratio_bnn = None,):
 
     scv.pp.filter_and_normalize(adata, min_shared_counts=20, n_top_genes=2000)

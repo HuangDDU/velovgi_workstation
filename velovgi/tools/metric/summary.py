@@ -28,7 +28,6 @@ def summary_metric(
     adata,
     cluster_edges,
     k_cluster,
-    # k_batch="batch",
     k_batch=None, # 可选是否对批次间的指标来评价
     k_velocity="velocity",
     x_emb="X_umap",
@@ -61,8 +60,9 @@ def get_result(exp_metrics):
     results["CBDir"] = np.concatenate([np.array(x) for x in exp_metrics["CBDir"].values()])
     results["ICVCoh"] = np.concatenate([np.array(x) for x in exp_metrics["ICVCoh"].values()])
     # TODO: 自己添加的指标以后再加上去
-    # results["BCBDir"] = np.concatenate([np.array(x) for x in exp_metrics["BCBDir"].values()])
-    # results["BICVCoh"] = np.concatenate([np.array(x) for x in exp_metrics["BICVCoh"].values()])
+    if "BCBDir" in exp_metrics.keys():
+        results["BCBDir"] = np.concatenate([np.array(x) for x in exp_metrics["BCBDir"].values()])
+        results["BICVCoh"] = np.concatenate([np.array(x) for x in exp_metrics["BICVCoh"].values()])
     # 空缺部分补为None
     max_len = max([len(results[key]) for key in results.keys()])
     for key in results.keys():
@@ -73,8 +73,7 @@ def get_result(exp_metrics):
     return results
 
 
-# 获得所有模型整体的指标DataFrame
-def get_metric_total_df(model_names, adata_list, cluster_edges, cluster_key="clusters", batch_key=None, return_raw=True):
+def get_metric_total_df_deprecated(model_names, adata_list, cluster_edges, cluster_key="clusters", batch_key=None, return_raw=True):
     dfs = []
 
     for tmp_adata in adata_list:
@@ -111,3 +110,54 @@ def get_metric_total_df(model_names, adata_list, cluster_edges, cluster_key="clu
 
     df = pd.concat(df_list, axis=0)
     return df
+
+
+def get_metric_total_df(model_names, adata_list, cluster_edges, cluster_key="clusters", batch_key=None, return_raw=True):
+
+    if return_raw==True:
+        df_list = []
+        for i in range(len(model_names)):
+            tmp_adata = adata_list[i]
+            tmp_model_name = model_names[i]
+            adata_velo = pre_metric(tmp_adata, "velocity")
+            exp_metrics = summary_metric(adata_velo, cluster_edges, k_cluster = cluster_key, k_batch = batch_key, return_raw=True)
+            result = get_result(exp_metrics)
+            tmp_df = pd.DataFrame(result)
+
+
+            df_1 = tmp_df[["CBDir"]] # 这样是为了方便后续的字符串列
+            df_1["Metric"] = "CBDir"
+            df_1["Score"] = tmp_df["CBDir"]
+
+            df_2 = tmp_df[["ICVCoh"]]
+            df_2["Metric"] = "ICVCoh"
+            df_2["Score"] = tmp_df["ICVCoh"]
+
+            # TODO: 自己添加的指标以后再加上去
+            if not (batch_key == None):
+                df_3 = tmp_df[["BCBDir"]]
+                df_3["Metric"] = "BCBDir"
+                df_3["Score"] = tmp_df["BCBDir"]
+
+                df_4 = tmp_df[["BICVCoh"]]
+                df_4["Metric"] = "BICVCoh"
+                df_4["Score"] = tmp_df["BICVCoh"]
+
+                df_ = pd.concat([df_1, df_2, df_3, df_4], axis=0)
+            else:
+                df_ =  pd.concat([df_1, df_2], axis=0)
+            df_["Model"] = tmp_model_name # 指标结果名称遵循特定的规则：模型_数据
+            df_list.append(df_)
+        df = pd.concat(df_list, axis=0)
+        return df
+    
+    else:
+        metric_dict = {}
+        for i in range(len(model_names)):
+            tmp_adata = adata_list[i]
+            tmp_model_name = model_names[i]
+            adata_velo = pre_metric(tmp_adata, "velocity")
+            exp_metrics = summary_metric(adata_velo, cluster_edges, k_cluster = cluster_key, k_batch = batch_key, return_raw=False)
+            metric_dict[tmp_model_name] = exp_metrics[1]
+        df = pd.DataFrame(metric_dict)
+        return df
