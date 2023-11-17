@@ -1,0 +1,862 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>velovgi.tools._model &#8212; Example Jupyter Book for Read the Docs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster.custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster-sideTip-punk.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster-sideTip-noir.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster-sideTip-light.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/micromodal.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/tabs.js"></script>
+    <script src="../../../_static/js/hoverxref.js"></script>
+    <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+    <script src="../../../_static/js/micromodal.min.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/velovgi/tools/_model';</script>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    Index
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">MAIN</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../api_complex.html">API (Complex)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../generated/velovgi.pl.html">velovgi.pl</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.pl.draw_batch.html">velovgi.pl.draw_batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.pl.draw_batch_layer.html">velovgi.pl.draw_batch_layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.pl.draw_gene.html">velovgi.pl.draw_gene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.pl.metric.html">velovgi.pl.metric</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.pl.utils.html">velovgi.pl.utils</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../generated/velovgi.tl.html">velovgi.tl</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../generated/velovgi.tl.metric.html">velovgi.tl.metric</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/velovgi.tl.metric.batch_eval_utils.html">velovgi.tl.metric.batch_eval_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/velovgi.tl.metric.eval_utils.html">velovgi.tl.metric.eval_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../generated/velovgi.tl.metric.summary.html">velovgi.tl.metric.summary</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.tl.output.html">velovgi.tl.output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.tl.read_write.html">velovgi.tl.read_write</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../generated/velovgi.pl.html">velovgi.pl</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.pl.draw_batch.html">velovgi.pl.draw_batch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.pl.draw_batch_layer.html">velovgi.pl.draw_batch_layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.pl.draw_gene.html">velovgi.pl.draw_gene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.pl.metric.html">velovgi.pl.metric</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.pl.utils.html">velovgi.pl.utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../api_simplified.html">API (Simplified)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/velovgi.preprocessing.preprocess.html">velovgi.preprocessing.preprocess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/velovgi.preprocessing.moment_layer_attribute.html">velovgi.preprocessing.moment_layer_attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/velovgi.tools.VELOVGI.html">velovgi.tools.VELOVGI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/velovgi.tools.VELOVGI.train.html">velovgi.tools.VELOVGI.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/velovgi.tools.add_velovi_outputs_to_adata.html">velovgi.tools.add_velovi_outputs_to_adata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/velovgi.tools.read_adata.html">velovgi.tools.read_adata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/velovgi.tools.write_adata.html">velovgi.tools.write_adata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/velovgi.tl.VELOVGI.train.html">velovgi.tl.VELOVGI.train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/velovgi.tl.add_velovi_outputs_to_adata.html">velovgi.tl.add_velovi_outputs_to_adata</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TUTORIALS 🕶️</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../realease_notes.html">Release Notes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DEVELOPMENT</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../dev_log/index.html">Devlopment log</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/readthedocs-examples/example-jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/readthedocs-examples/example-jupyter-book/issues/new?title=Issue%20on%20page%20%2F_modules/velovgi/tools/_model.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for velovgi.tools._model</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">anndata</span> <span class="kn">import</span> <span class="n">AnnData</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ttest_ind</span>
+<span class="c1"># from scvi._compat import Literal</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span>
+<span class="kn">from</span> <span class="nn">scvi._utils</span> <span class="kn">import</span> <span class="n">_doc_params</span>
+<span class="kn">from</span> <span class="nn">scvi.data</span> <span class="kn">import</span> <span class="n">AnnDataManager</span>
+<span class="kn">from</span> <span class="nn">scvi.data.fields</span> <span class="kn">import</span> <span class="n">LayerField</span><span class="p">,</span> <span class="n">NumericalObsField</span>
+<span class="kn">from</span> <span class="nn">scvi.dataloaders</span> <span class="kn">import</span> <span class="n">AnnDataLoader</span><span class="p">,</span> <span class="n">DataSplitter</span>
+<span class="kn">from</span> <span class="nn">scvi.model._utils</span> <span class="kn">import</span> <span class="n">scrna_raw_counts_properties</span>
+<span class="kn">from</span> <span class="nn">scvi.model.base</span> <span class="kn">import</span> <span class="n">BaseModelClass</span><span class="p">,</span> <span class="n">UnsupervisedTrainingMixin</span><span class="p">,</span> <span class="n">VAEMixin</span>
+<span class="kn">from</span> <span class="nn">scvi.model.base._utils</span> <span class="kn">import</span> <span class="n">_de_core</span>
+<span class="kn">from</span> <span class="nn">scvi.train</span> <span class="kn">import</span> <span class="n">TrainingPlan</span><span class="p">,</span> <span class="n">TrainRunner</span>
+<span class="kn">from</span> <span class="nn">scvi.utils._docstrings</span> <span class="kn">import</span> <span class="n">doc_differential_expression</span><span class="p">,</span> <span class="n">setup_anndata_dsp</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
+
+<span class="kn">from</span> <span class="nn">velovi._model</span> <span class="kn">import</span> <span class="n">VELOVI</span><span class="p">,</span> <span class="n">_softplus_inverse</span> <span class="c1"># 用于继承的大流程模型，继承VELOVI实现VELOVGI</span>
+
+<span class="kn">from</span> <span class="nn">velovi._constants</span> <span class="kn">import</span> <span class="n">REGISTRY_KEYS</span>  <span class="c1"># 注册U，S的常量</span>
+<span class="kn">from</span> <span class="nn">._module</span> <span class="kn">import</span> <span class="n">VELOVGAE</span>  <span class="c1"># VAE变为VGAE，作为主模型本体</span>
+
+<span class="kn">from</span> <span class="nn">.dataloader._neighbor_data_splitter</span> <span class="kn">import</span> <span class="n">NeighborDataSplitter</span> <span class="c1"># 使用了Neighbor MiniBatch策略的DataSplitter</span>
+<span class="kn">from</span> <span class="nn">.dataloader._random_data_splitter</span> <span class="kn">import</span> <span class="n">RandomDataSplitter</span> <span class="c1"># 随机样本划分</span>
+<span class="kn">from</span> <span class="nn">.dataloader._cluster_data_splitter</span> <span class="kn">import</span> <span class="n">ClusterDataSplitter</span> <span class="c1"># 聚类划分</span>
+<span class="kn">from</span> <span class="nn">.dataloader._random_ann_dataloader</span> <span class="kn">import</span> <span class="n">RandomAnnDataLoader</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+
+<div class="viewcode-block" id="VELOVGI"><a class="viewcode-back" href="../../../generated/velovgi.tools.VELOVGI.html#velovgi.tools.VELOVGI">[docs]</a><span class="k">class</span> <span class="nc">VELOVGI</span><span class="p">(</span><span class="n">VELOVI</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;VELOVGI</span>
+
+<span class="sd">    VELOVGI</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    adata</span>
+<span class="sd">        _description_</span>
+<span class="sd">    n_hidden </span>
+<span class="sd">        _description_. Defaults to 256.</span>
+<span class="sd">    n_latent</span>
+<span class="sd">        _description_. Defaults to 10.</span>
+<span class="sd">    n_layers</span>
+<span class="sd">        _description_. Defaults to 1.</span>
+<span class="sd">    dropout_rate</span>
+<span class="sd">        _description_. Defaults to 0.1.</span>
+<span class="sd">    train_batch_mode</span>
+<span class="sd">        _description_. Defaults to &quot;random-batch&quot;.</span>
+<span class="sd">    gamma_init_data</span>
+<span class="sd">        _description_. Defaults to False.</span>
+<span class="sd">    linear_decoder</span>
+<span class="sd">        _description_. Defaults to False.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="VELOVGI.__init__"><a class="viewcode-back" href="../../../generated/velovgi.tools.VELOVGI.html#velovgi.tools.VELOVGI.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">adata</span><span class="p">:</span> <span class="n">AnnData</span><span class="p">,</span>
+        <span class="n">n_hidden</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span>
+        <span class="n">n_latent</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">n_layers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">dropout_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">train_batch_mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;random-batch&quot;</span><span class="p">,</span> <span class="s2">&quot;allsample-batch&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;random-batch&quot;</span><span class="p">,</span>
+        <span class="n">gamma_init_data</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">linear_decoder</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">model_kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;__init__</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            adata (AnnData): _description_</span>
+<span class="sd">            n_hidden (int, optional): _description_. Defaults to 256.</span>
+<span class="sd">            n_latent (int, optional): _description_. Defaults to 10.</span>
+<span class="sd">            n_layers (int, optional): _description_. Defaults to 1.</span>
+<span class="sd">            dropout_rate (float, optional): _description_. Defaults to 0.1.</span>
+<span class="sd">            train_batch_mode (Literal[&amp;quot;random, optional): _description_. Defaults to &quot;random-batch&quot;.</span>
+<span class="sd">            gamma_init_data (bool, optional): _description_. Defaults to False.</span>
+<span class="sd">            linear_decoder (bool, optional): _description_. Defaults to False.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_batch_mode</span> <span class="o">=</span> <span class="n">train_batch_mode</span>  <span class="c1"># 批次训练模式</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_latent</span> <span class="o">=</span> <span class="n">n_latent</span>
+
+        <span class="n">spliced</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adata_manager</span><span class="o">.</span><span class="n">get_from_registry</span><span class="p">(</span><span class="n">REGISTRY_KEYS</span><span class="o">.</span><span class="n">X_KEY</span><span class="p">)</span>
+        <span class="n">unspliced</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adata_manager</span><span class="o">.</span><span class="n">get_from_registry</span><span class="p">(</span><span class="n">REGISTRY_KEYS</span><span class="o">.</span><span class="n">U_KEY</span><span class="p">)</span>
+
+        <span class="n">sorted_unspliced</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">unspliced</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">ind</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">n_obs</span> <span class="o">*</span> <span class="mf">0.99</span><span class="p">)</span>
+        <span class="n">us_upper_ind</span> <span class="o">=</span> <span class="n">sorted_unspliced</span><span class="p">[</span><span class="n">ind</span><span class="p">:,</span> <span class="p">:]</span>
+
+        <span class="n">us_upper</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">ms_upper</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">us_upper_ind</span><span class="p">)):</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="n">us_upper_ind</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">us_upper</span> <span class="o">+=</span> <span class="p">[</span><span class="n">unspliced</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">n_vars</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]]</span>
+            <span class="n">ms_upper</span> <span class="o">+=</span> <span class="p">[</span><span class="n">spliced</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">n_vars</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]]</span>
+        <span class="n">us_upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">us_upper</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">ms_upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">ms_upper</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">alpha_unconstr</span> <span class="o">=</span> <span class="n">_softplus_inverse</span><span class="p">(</span><span class="n">us_upper</span><span class="p">)</span>
+        <span class="n">alpha_unconstr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">alpha_unconstr</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+        <span class="n">alpha_1_unconstr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">us_upper</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+        <span class="n">lambda_alpha_unconstr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">us_upper</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">gamma_init_data</span><span class="p">:</span>
+            <span class="n">gamma_unconstr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">_softplus_inverse</span><span class="p">(</span><span class="n">us_upper</span> <span class="o">/</span> <span class="n">ms_upper</span><span class="p">),</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">gamma_unconstr</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">module</span> <span class="o">=</span> <span class="n">VELOVGAE</span><span class="p">(</span>
+            <span class="n">n_input</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">summary_stats</span><span class="p">[</span><span class="s2">&quot;n_vars&quot;</span><span class="p">],</span>
+            <span class="n">n_hidden</span><span class="o">=</span><span class="n">n_hidden</span><span class="p">,</span>
+            <span class="n">n_latent</span><span class="o">=</span><span class="n">n_latent</span><span class="p">,</span>
+            <span class="n">n_layers</span><span class="o">=</span><span class="n">n_layers</span><span class="p">,</span>
+            <span class="n">dropout_rate</span><span class="o">=</span><span class="n">dropout_rate</span><span class="p">,</span>
+            <span class="n">gamma_unconstr_init</span><span class="o">=</span><span class="n">gamma_unconstr</span><span class="p">,</span>
+            <span class="n">alpha_unconstr_init</span><span class="o">=</span><span class="n">alpha_unconstr</span><span class="p">,</span>
+            <span class="n">alpha_1_unconstr_init</span><span class="o">=</span><span class="n">alpha_1_unconstr</span><span class="p">,</span>
+            <span class="n">lambda_alpha_unconstr_init</span><span class="o">=</span><span class="n">lambda_alpha_unconstr</span><span class="p">,</span>
+            <span class="n">switch_spliced</span><span class="o">=</span><span class="n">ms_upper</span><span class="p">,</span>
+            <span class="n">switch_unspliced</span><span class="o">=</span><span class="n">us_upper</span><span class="p">,</span>
+            <span class="n">linear_decoder</span><span class="o">=</span><span class="n">linear_decoder</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">model_kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_summary_string</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;VELOVGI Model with the following params: </span><span class="se">\n</span><span class="s2">n_hidden: </span><span class="si">{}</span><span class="s2">, n_latent: </span><span class="si">{}</span><span class="s2">, n_layers: </span><span class="si">{}</span><span class="s2">, dropout_rate: &quot;</span>
+            <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">n_hidden</span><span class="p">,</span>
+            <span class="n">n_latent</span><span class="p">,</span>
+            <span class="n">n_layers</span><span class="p">,</span>
+            <span class="n">dropout_rate</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># 此处的layer与NeighborMiniBatch的num_neighbors相关，保存下来</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span> <span class="o">=</span> <span class="n">n_layers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_params_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_init_params</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span></div>
+        
+
+    <span class="c1"># # TODO: 之前是整图训练，现在开始使用Neighbor MiniBatch策略训练</span>
+    <span class="c1"># def train(</span>
+    <span class="c1">#     self,</span>
+    <span class="c1">#     batch_mode: Literal[&quot;neighbor&quot;, &quot;cluster&quot;, &quot;random&quot;, &quot;all&quot;] = &quot;neighbor&quot;,</span>
+    <span class="c1">#     num_neighbors: List = [3, ],  # 与Neighbor MiniBatch策略相关，同时与神经网络层数相关</span>
+    <span class="c1">#     max_epochs: Optional[int] = 500,</span>
+    <span class="c1">#     lr: float = 1e-2,</span>
+    <span class="c1">#     weight_decay: float = 1e-2,</span>
+    <span class="c1">#     use_gpu: Optional[Union[str, int, bool]] = None,</span>
+    <span class="c1">#     train_size: float = 0.9,</span>
+    <span class="c1">#     validation_size: Optional[float] = None,</span>
+    <span class="c1">#     batch_size: int = 256,</span>
+    <span class="c1">#     early_stopping: bool = True,</span>
+    <span class="c1">#     gradient_clip_val: float = 10,</span>
+    <span class="c1">#     plan_kwargs: Optional[dict] = None,</span>
+    <span class="c1">#     **trainer_kwargs,</span>
+    <span class="c1"># ):</span>
+    <span class="c1">#     &quot;&quot;&quot;Train the VeloVGAE Model</span>
+
+    <span class="c1">#     Args:</span>
+    <span class="c1">#         batch_mode (Literal[&amp;quot;neighbor&amp;quot;, &amp;quot;cluster&amp;quot;, &amp;quot;random&amp;quot;, &amp;quot;all&amp;quot;], optional): _description_. Defaults to &quot;neighbor&quot;.</span>
+    <span class="c1">#         num_neighbors (List, optional): _description_. Defaults to [3, ].</span>
+    <span class="c1">#         lr (float, optional): _description_. Defaults to 1e-2.</span>
+    <span class="c1">#         weight_decay (float, optional): _description_. Defaults to 1e-2.</span>
+    <span class="c1">#         use_gpu (Optional[Union[str, int, bool]], optional): _description_. Defaults to None.</span>
+    <span class="c1">#         train_size (float, optional): _description_. Defaults to 0.9.</span>
+    <span class="c1">#         validation_size (Optional[float], optional): _description_. Defaults to None.</span>
+    <span class="c1">#         batch_size (int, optional): _description_. Defaults to 256.</span>
+    <span class="c1">#         early_stopping (bool, optional): _description_. Defaults to True.</span>
+    <span class="c1">#         gradient_clip_val (float, optional): _description_. Defaults to 10.</span>
+    <span class="c1">#         plan_kwargs (Optional[dict], optional): _description_. Defaults to None.</span>
+
+    <span class="c1">#     Returns:</span>
+    <span class="c1">#         _type_: _description_</span>
+    <span class="c1">#     &quot;&quot;&quot;</span>
+    <span class="c1">#     user_plan_kwargs = (</span>
+    <span class="c1">#         plan_kwargs.copy() if isinstance(plan_kwargs, dict) else dict()</span>
+    <span class="c1">#     )</span>
+    <span class="c1">#     plan_kwargs = dict(lr=lr, weight_decay=weight_decay, optimizer=&quot;AdamW&quot;)</span>
+    <span class="c1">#     plan_kwargs.update(user_plan_kwargs)</span>
+
+    <span class="c1">#     user_train_kwargs = trainer_kwargs.copy()</span>
+    <span class="c1">#     trainer_kwargs = dict(gradient_clip_val=gradient_clip_val)</span>
+    <span class="c1">#     trainer_kwargs.update(user_train_kwargs)</span>
+
+    <span class="c1">#     if batch_mode == &quot;neighbor&quot;:</span>
+    <span class="c1">#         # TODO: 直接修改为Neighbor采样的Mini-Batch策略</span>
+    <span class="c1">#         # print(&quot;选择 Neighbor 策略&quot;)</span>
+    <span class="c1">#         print(&quot;choosing neighbor minibatch&quot;)</span>
+    <span class="c1">#         assert self.n_layers == len(num_neighbors),\</span>
+    <span class="c1">#             f&quot;Neighbor MiniBatch parameter &#39;num_neighbors&#39;:{num_neighbors} not math netowrk layers num:{self.n_layers}!&quot;</span>
+    <span class="c1">#         data_splitter = NeighborDataSplitter(</span>
+    <span class="c1">#             self.adata_manager,</span>
+    <span class="c1">#             train_size=train_size,</span>
+    <span class="c1">#             validation_size=validation_size,</span>
+    <span class="c1">#             num_neighbors=num_neighbors,</span>
+    <span class="c1">#             use_gpu=use_gpu,</span>
+    <span class="c1">#             batch_size=batch_size</span>
+    <span class="c1">#         )</span>
+    <span class="c1">#     elif batch_mode == &quot;cluster&quot;:</span>
+    <span class="c1">#         # TODO: 按照样本聚类划分Mini-Batch策略</span>
+    <span class="c1">#         # print(&quot;选择 Cluster 策略&quot;)</span>
+    <span class="c1">#         print(&quot;choosing cluster minibatch&quot;)</span>
+    <span class="c1">#         data_splitter = ClusterDataSplitter(</span>
+    <span class="c1">#             self.adata_manager,</span>
+    <span class="c1">#             train_size=train_size,</span>
+    <span class="c1">#             validation_size=validation_size,</span>
+    <span class="c1">#             use_gpu=use_gpu</span>
+    <span class="c1">#         )</span>
+    <span class="c1">#     else:</span>
+    <span class="c1">#         if batch_mode == &quot;all&quot;:</span>
+    <span class="c1">#             batch_size = self.adata.shape[0]</span>
+    <span class="c1">#             # print(&quot;选择 All 策略&quot;, batch_size)</span>
+    <span class="c1">#             print(&quot;choosing all minibatch&quot;)</span>
+    <span class="c1">#         else:</span>
+    <span class="c1">#             # print(&quot;选择 Random 策略&quot;, batch_size)</span>
+    <span class="c1">#             print(&quot;choosing random minibatch&quot;)</span>
+    <span class="c1">#         # TODO: 随机样本划分</span>
+    <span class="c1">#         data_splitter = RandomDataSplitter(</span>
+    <span class="c1">#             self.adata_manager,</span>
+    <span class="c1">#             train_size=train_size,</span>
+    <span class="c1">#             validation_size=validation_size,</span>
+    <span class="c1">#             use_gpu=use_gpu,</span>
+    <span class="c1">#             batch_size=batch_size</span>
+    <span class="c1">#         )</span>
+
+    <span class="c1">#     training_plan = TrainingPlan(self.module, **plan_kwargs)</span>
+
+    <span class="c1">#     es = &quot;early_stopping&quot;</span>
+    <span class="c1">#     trainer_kwargs[es] = (</span>
+    <span class="c1">#         early_stopping if es not in trainer_kwargs.keys() else trainer_kwargs[es]</span>
+    <span class="c1">#     )</span>
+    <span class="c1">#     # 这里添加日志输出</span>
+    <span class="c1">#     runner = TrainRunner(</span>
+    <span class="c1">#         self,</span>
+    <span class="c1">#         training_plan=training_plan,</span>
+    <span class="c1">#         data_splitter=data_splitter,</span>
+    <span class="c1">#         max_epochs=max_epochs,</span>
+    <span class="c1">#         use_gpu=use_gpu,</span>
+    <span class="c1">#         **trainer_kwargs,</span>
+    <span class="c1">#     )</span>
+    <span class="c1">#     return runner()</span>
+
+    <span class="c1"># TODO: 添加了断点训练功能</span>
+<div class="viewcode-block" id="VELOVGI.train"><a class="viewcode-back" href="../../../generated/velovgi.tools.VELOVGI.train.html#velovgi.tools.VELOVGI.train">[docs]</a>    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">checkpoint_mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;only&quot;</span><span class="p">,</span> <span class="s2">&quot;checkpoint&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;only&quot;</span><span class="p">,</span> <span class="c1"># 不间断训练或断点训练</span>
+        <span class="n">batch_mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;neighbor&quot;</span><span class="p">,</span> <span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="s2">&quot;random&quot;</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;neighbor&quot;</span><span class="p">,</span>
+        <span class="n">num_neighbors</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">],</span>  <span class="c1"># 与Neighbor MiniBatch策略相关，同时与神经网络层数相关</span>
+        <span class="n">max_epochs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="c1"># 不同的断点需要的epoch不一样，为了断点训练，这里价格默认的None</span>
+        <span class="n">lr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-2</span><span class="p">,</span>
+        <span class="n">weight_decay</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-2</span><span class="p">,</span>
+        <span class="n">use_gpu</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">train_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span>
+        <span class="n">validation_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span>
+        <span class="n">early_stopping</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">gradient_clip_val</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">plan_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">trainer_kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="n">checkpoint_mode</span><span class="o">==</span><span class="s2">&quot;only&quot;</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;train_runner_params_dict&quot;</span><span class="p">)):</span>
+            <span class="c1"># 选定不间断训练或断点训练没有runner参数时，都要初始化runner参数</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;初始训练，初始化runner参数&quot;</span><span class="p">)</span>
+            <span class="c1"># 关于epoch默认初始化</span>
+            <span class="k">if</span> <span class="n">max_epochs</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">max_epochs</span> <span class="o">=</span> <span class="mi">500</span>
+            <span class="c1"># TODO: 对于model需要强制初始化</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_train_runner_params_dict</span><span class="p">(</span>
+                    <span class="n">batch_mode</span><span class="o">=</span><span class="n">batch_mode</span><span class="p">,</span>
+                    <span class="n">num_neighbors</span><span class="o">=</span><span class="n">num_neighbors</span><span class="p">,</span>
+                    <span class="n">max_epochs</span><span class="o">=</span><span class="n">max_epochs</span><span class="p">,</span>
+                    <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span>
+                    <span class="n">weight_decay</span><span class="o">=</span><span class="n">weight_decay</span><span class="p">,</span>
+                    <span class="n">use_gpu</span><span class="o">=</span><span class="n">use_gpu</span><span class="p">,</span>
+                    <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">,</span>
+                    <span class="n">validation_size</span><span class="o">=</span><span class="n">validation_size</span><span class="p">,</span>
+                    <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                    <span class="n">early_stopping</span><span class="o">=</span><span class="n">early_stopping</span><span class="p">,</span>
+                    <span class="n">gradient_clip_val</span><span class="o">=</span><span class="n">gradient_clip_val</span><span class="p">,</span>
+                    <span class="n">plan_kwargs</span><span class="o">=</span><span class="n">plan_kwargs</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">trainer_kwargs</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;断点继续训练&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;logger&quot;</span> <span class="ow">in</span> <span class="n">trainer_kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="c1"># logger需要更新，方便查看</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">trainer_kwargs</span><span class="p">[</span><span class="s2">&quot;logger&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trainer_kwargs</span><span class="p">[</span><span class="s2">&quot;logger&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">max_epochs</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># 不同断点需要的epoch不一样</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">train_runner_params_dict</span><span class="p">[</span><span class="s2">&quot;max_epochs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_epochs</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;断点的epochs：&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_runner_params_dict</span><span class="p">[</span><span class="s2">&quot;max_epochs&quot;</span><span class="p">])</span>
+        <span class="n">runner</span> <span class="o">=</span> <span class="n">TrainRunner</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">training_plan</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">train_runner_params_dict</span><span class="p">[</span><span class="s2">&quot;training_plan&quot;</span><span class="p">],</span>
+            <span class="n">data_splitter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">train_runner_params_dict</span><span class="p">[</span><span class="s2">&quot;data_splitter&quot;</span><span class="p">],</span>
+            <span class="n">max_epochs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">train_runner_params_dict</span><span class="p">[</span><span class="s2">&quot;max_epochs&quot;</span><span class="p">],</span>
+            <span class="n">use_gpu</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">train_runner_params_dict</span><span class="p">[</span><span class="s2">&quot;use_gpu&quot;</span><span class="p">],</span>
+            <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">trainer_kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">runner</span><span class="p">()</span></div>
+ 
+
+    <span class="c1"># 提取传入到runner需要的内容</span>
+    <span class="k">def</span> <span class="nf">_get_train_runner_params_dict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">batch_mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;neighbor&quot;</span><span class="p">,</span> <span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="s2">&quot;random&quot;</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;neighbor&quot;</span><span class="p">,</span>
+        <span class="n">num_neighbors</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">],</span>  <span class="c1"># 与Neighbor MiniBatch策略相关，同时与神经网络层数相关</span>
+        <span class="n">max_epochs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span>
+        <span class="n">lr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-2</span><span class="p">,</span>
+        <span class="n">weight_decay</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-2</span><span class="p">,</span>
+        <span class="n">use_gpu</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">train_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span>
+        <span class="n">validation_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span>
+        <span class="n">early_stopping</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">gradient_clip_val</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">plan_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">trainer_kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">user_plan_kwargs</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">plan_kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">plan_kwargs</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="n">plan_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="n">weight_decay</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;AdamW&quot;</span><span class="p">)</span>
+        <span class="n">plan_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">user_plan_kwargs</span><span class="p">)</span>
+
+        <span class="n">user_train_kwargs</span> <span class="o">=</span> <span class="n">trainer_kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">trainer_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">gradient_clip_val</span><span class="o">=</span><span class="n">gradient_clip_val</span><span class="p">)</span>
+        <span class="n">trainer_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">user_train_kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">batch_mode</span> <span class="o">==</span> <span class="s2">&quot;neighbor&quot;</span><span class="p">:</span>
+            <span class="c1"># TODO: 直接修改为Neighbor采样的Mini-Batch策略</span>
+            <span class="c1"># print(&quot;选择 Neighbor 策略&quot;)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;choosing neighbor minibatch&quot;</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_neighbors</span><span class="p">),</span>\
+                <span class="sa">f</span><span class="s2">&quot;Neighbor MiniBatch parameter &#39;num_neighbors&#39;:</span><span class="si">{</span><span class="n">num_neighbors</span><span class="si">}</span><span class="s2"> not math netowrk layers num:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span><span class="si">}</span><span class="s2">!&quot;</span>
+            <span class="n">data_splitter</span> <span class="o">=</span> <span class="n">NeighborDataSplitter</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">adata_manager</span><span class="p">,</span>
+                <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">,</span>
+                <span class="n">validation_size</span><span class="o">=</span><span class="n">validation_size</span><span class="p">,</span>
+                <span class="n">num_neighbors</span><span class="o">=</span><span class="n">num_neighbors</span><span class="p">,</span>
+                <span class="n">use_gpu</span><span class="o">=</span><span class="n">use_gpu</span><span class="p">,</span>
+                <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">batch_mode</span> <span class="o">==</span> <span class="s2">&quot;cluster&quot;</span><span class="p">:</span>
+            <span class="c1"># TODO: 按照样本聚类划分Mini-Batch策略</span>
+            <span class="c1"># print(&quot;选择 Cluster 策略&quot;)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;choosing cluster minibatch&quot;</span><span class="p">)</span>
+            <span class="n">data_splitter</span> <span class="o">=</span> <span class="n">ClusterDataSplitter</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">adata_manager</span><span class="p">,</span>
+                <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">,</span>
+                <span class="n">validation_size</span><span class="o">=</span><span class="n">validation_size</span><span class="p">,</span>
+                <span class="n">use_gpu</span><span class="o">=</span><span class="n">use_gpu</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">batch_mode</span> <span class="o">==</span> <span class="s2">&quot;all&quot;</span><span class="p">:</span>
+                <span class="n">batch_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="c1"># print(&quot;选择 All 策略&quot;, batch_size)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;choosing all minibatch&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># print(&quot;选择 Random 策略&quot;, batch_size)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;choosing random minibatch&quot;</span><span class="p">)</span>
+            <span class="c1"># TODO: 随机样本划分</span>
+            <span class="n">data_splitter</span> <span class="o">=</span> <span class="n">RandomDataSplitter</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">adata_manager</span><span class="p">,</span>
+                <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">,</span>
+                <span class="n">validation_size</span><span class="o">=</span><span class="n">validation_size</span><span class="p">,</span>
+                <span class="n">use_gpu</span><span class="o">=</span><span class="n">use_gpu</span><span class="p">,</span>
+                <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span>
+            <span class="p">)</span>
+
+        <span class="n">training_plan</span> <span class="o">=</span> <span class="n">TrainingPlan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="p">,</span> <span class="o">**</span><span class="n">plan_kwargs</span><span class="p">)</span>
+
+        <span class="n">es</span> <span class="o">=</span> <span class="s2">&quot;early_stopping&quot;</span>
+        <span class="n">trainer_kwargs</span><span class="p">[</span><span class="n">es</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">early_stopping</span> <span class="k">if</span> <span class="n">es</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">trainer_kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">else</span> <span class="n">trainer_kwargs</span><span class="p">[</span><span class="n">es</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 保存到传入train_runner的属性</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_runner_params_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">training_plan</span><span class="o">=</span><span class="n">training_plan</span><span class="p">,</span>
+            <span class="n">data_splitter</span><span class="o">=</span><span class="n">data_splitter</span><span class="p">,</span>
+            <span class="n">max_epochs</span><span class="o">=</span><span class="n">max_epochs</span><span class="p">,</span>
+            <span class="n">use_gpu</span><span class="o">=</span><span class="n">use_gpu</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainer_kwargs</span> <span class="o">=</span> <span class="n">trainer_kwargs</span>
+        
+
+    <span class="k">def</span> <span class="nf">_make_data_loader</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">adata</span><span class="p">:</span> <span class="n">AnnData</span><span class="p">,</span>
+        <span class="n">indices</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="c1"># TODO: 此处构造随机图的MiniBatch，因为最后只进行一次正向传播，最好还是整图输入</span>
+        <span class="k">if</span> <span class="n">batch_size</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># 默认整图一次输入</span>
+            <span class="n">batch_size</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">adata_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_anndata_manager</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">RandomAnnDataLoader</span><span class="p">(</span>
+            <span class="n">adata_manager</span><span class="p">,</span>
+            <span class="n">indices</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+            <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
+            <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span>
+        <span class="p">)</span></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Read the Docs team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
