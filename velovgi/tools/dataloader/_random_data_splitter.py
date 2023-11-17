@@ -28,7 +28,7 @@ class RandomDataSplitter(DataSplitter):
         return RandomAnnDataLoader(
             self.adata_manager,
             indices=self.train_idx,
-            device=self.device,
+            # device=self.device,
             shuffle=True,
             pin_memory=self.pin_memory,
             **self.data_loader_kwargs,  # 这里隐式提供batch_size
@@ -40,7 +40,7 @@ class RandomDataSplitter(DataSplitter):
             return RandomAnnDataLoader(
                 self.adata_manager,
                 indices=self.val_idx,
-                device=self.device,
+                # device=self.device,
                 shuffle=False,
                 pin_memory=self.pin_memory,
                 **self.data_loader_kwargs,  # 这里隐式提供batch_size

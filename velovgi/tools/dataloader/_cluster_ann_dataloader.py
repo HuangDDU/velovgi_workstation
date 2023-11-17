@@ -9,8 +9,9 @@ import pandas as pd
 import torch
 from torch.utils.data import DataLoader
 
-from scvi.data import AnnDataManager
-from scvi.dataloaders._anntorchdataset import AnnTorchDataset
+from scvi.data import AnnDataManager, AnnTorchDataset
+# from scvi.dataloaders._anntorchdataset import AnnTorchDataset
+
 
 logger = logging.getLogger(__name__)
 

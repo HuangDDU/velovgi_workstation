@@ -1,6 +1,6 @@
 ########################################################################################
 import collections
-from typing import Callable, Iterable, List, Optional, Literal
+from typing import Callable, Iterable, List, Optional
 
 import torch
 import torch.nn as nn
@@ -9,6 +9,7 @@ from torch.distributions import Normal
 from torch_geometric.nn import MessagePassing, GCNConv, GATConv
 
 from scvi.nn import one_hot
+from scvi._compat import Literal
 
 def _identity(x):
     return x

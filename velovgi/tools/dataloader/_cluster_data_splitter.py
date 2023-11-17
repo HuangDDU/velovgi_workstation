@@ -28,7 +28,7 @@ class ClusterDataSplitter(DataSplitter):
         return ClusterAnnDataLoader(
             self.adata_manager,
             indices=self.train_idx,
-            device=self.device,
+            # device=self.device,
             shuffle=True,
             pin_memory=self.pin_memory,
             **self.data_loader_kwargs,  # 这里即使提供了batch_size也无效, 之后强制设置为1
@@ -40,7 +40,7 @@ class ClusterDataSplitter(DataSplitter):
             return ClusterAnnDataLoader(
                 self.adata_manager,
                 indices=self.val_idx,
-                device=self.device,
+                # device=self.device,
                 shuffle=False,
                 pin_memory=self.pin_memory,
                 **self.data_loader_kwargs,  # 这里即使提供了batch_size也无效, 之后强制设置为1
