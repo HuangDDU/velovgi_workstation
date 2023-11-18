@@ -15,8 +15,6 @@
    
       ~VELOVGI.__init__
       ~VELOVGI.convert_legacy_save
-      ~VELOVGI.differential_transition
-      ~VELOVGI.differential_velocity
       ~VELOVGI.get_anndata_manager
       ~VELOVGI.get_directional_uncertainty
       ~VELOVGI.get_elbo
@@ -25,15 +23,12 @@
       ~VELOVGI.get_gene_likelihood
       ~VELOVGI.get_latent_representation
       ~VELOVGI.get_latent_time
-      ~VELOVGI.get_loadings
       ~VELOVGI.get_marginal_ll
       ~VELOVGI.get_permutation_scores
       ~VELOVGI.get_rates
       ~VELOVGI.get_reconstruction_error
       ~VELOVGI.get_state_assignment
-      ~VELOVGI.get_variance_explained
       ~VELOVGI.get_velocity
-      ~VELOVGI.get_velocity_from_latent
       ~VELOVGI.load
       ~VELOVGI.load_registry
       ~VELOVGI.register_manager

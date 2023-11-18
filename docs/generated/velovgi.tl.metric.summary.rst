@@ -14,6 +14,7 @@
    .. autosummary::
    
       get_metric_total_df
+      get_metric_total_df_deprecated
       get_result
       pre_metric
       summary_metric

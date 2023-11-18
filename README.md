@@ -11,10 +11,13 @@ conda env create -f velovgi.yml
 ```
 The main packages version are as following :
 ```
+# Optimal Transportation
+pot = 0.9.0
+
 # Deeplearning 
 torch==1.12.1
 pytorch-lightning==1.7.7
-torch-geometric==1.12.1
+torch-geometric==2.0.1
 
 # scRNA-seq 
 scanpy==1.9.3

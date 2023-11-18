@@ -1,4 +1,12 @@
-README_deprecated.md
 *__pycache__*
 *.ipynb_checkpoints
 /conda
+
+
+# 废弃的README文件
+README_deprecated.md
+
+# pip包文件
+build
+dist
+VeloVGI.egg-info

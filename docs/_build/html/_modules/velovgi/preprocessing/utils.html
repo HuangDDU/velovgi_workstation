@@ -18,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -48,8 +48,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -91,6 +92,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -151,13 +161,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Example Jupyter Book for Read the Docs - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Example Jupyter Book for Read the Docs - Home"/>`);</script>
   
   
 </a></div>
@@ -185,6 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../generated/velovgi.tl.html">velovgi.tl</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.tl.lineage_recluster.html">velovgi.tl.lineage_recluster</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../generated/velovgi.tl.metric.html">velovgi.tl.metric</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../generated/velovgi.tl.metric.batch_eval_utils.html">velovgi.tl.metric.batch_eval_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../generated/velovgi.tl.metric.eval_utils.html">velovgi.tl.metric.eval_utils</a></li>
@@ -332,10 +344,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -343,7 +355,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -380,30 +392,18 @@ document.write(`
 <span class="kn">import</span> <span class="nn">scvelo</span> <span class="k">as</span> <span class="nn">scv</span>
 <span class="kn">from</span> <span class="nn">scvelo</span> <span class="kn">import</span> <span class="n">logging</span> <span class="k">as</span> <span class="n">logg</span>
 
+<span class="kn">from</span> <span class="nn">.batch_network_deprecated</span> <span class="kn">import</span> <span class="n">neighbor</span> <span class="k">as</span> <span class="n">neighbor_deprecated</span>
 <span class="kn">from</span> <span class="nn">.batch_network</span> <span class="kn">import</span> <span class="n">neighbor</span>
 <span class="kn">from</span> <span class="nn">.sample_recover</span> <span class="kn">import</span> <span class="n">sample</span><span class="p">,</span> <span class="n">get_all_index_list</span><span class="p">,</span> <span class="n">get_w_adjust_normal_list</span>
 
 <span class="c1"># 预处理</span>
-<div class="viewcode-block" id="preprocess"><a class="viewcode-back" href="../../../generated/velovgi.preprocessing.preprocess.html#velovgi.preprocessing.preprocess">[docs]</a><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_bnn_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_knn_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">batch_mode</span><span class="o">=</span><span class="s2">&quot;batch&quot;</span><span class="p">,</span> <span class="n">batch_key</span><span class="o">=</span><span class="s2">&quot;batch&quot;</span><span class="p">,</span> <span class="n">batch_pair_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Preprocess, generate multi-batch network</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        adata (_type_): _description_</span>
-<span class="sd">        n_bnn_neighbors (int, optional): _description_. Defaults to 15.</span>
-<span class="sd">        n_knn_neighbors (int, optional): _description_. Defaults to 15.</span>
-<span class="sd">        batch_mode (str, optional): _description_. Defaults to &quot;batch&quot;.</span>
-<span class="sd">        batch_key (str, optional): _description_. Defaults to &quot;batch&quot;.</span>
-<span class="sd">        batch_pair_list (_type_, optional): _description_. Defaults to None.</span>
-<span class="sd">        sample_mode (_type_, optional): _description_. Defaults to None.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        _type_: _description_</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">preprocess_deprecated</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_bnn_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_knn_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">batch_mode</span><span class="o">=</span><span class="s2">&quot;batch&quot;</span><span class="p">,</span> <span class="n">batch_key</span><span class="o">=</span><span class="s2">&quot;batch&quot;</span><span class="p">,</span> <span class="n">batch_pair_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># Preprocess, generate multi-batch network</span>
     <span class="n">scv</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">filter_and_normalize</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">min_shared_counts</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_top_genes</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">batch_mode</span> <span class="o">==</span> <span class="s2">&quot;batch&quot;</span><span class="p">:</span>
         <span class="c1"># 批次间单独建立邻居</span>
         <span class="n">logg</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;calculating knn and bnn mask...&quot;</span><span class="p">)</span>
-        <span class="n">knn_mask</span><span class="p">,</span> <span class="n">bnn_mask</span> <span class="o">=</span> <span class="n">neighbor</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_bnn_neighbors</span><span class="o">=</span><span class="n">n_bnn_neighbors</span><span class="p">,</span> <span class="n">n_knn_neighbors</span><span class="o">=</span><span class="n">n_knn_neighbors</span><span class="p">,</span> <span class="n">batch_key</span><span class="o">=</span><span class="n">batch_key</span><span class="p">,</span> <span class="n">batch_pair_list</span><span class="o">=</span><span class="n">batch_pair_list</span><span class="p">)</span>
+        <span class="n">knn_mask</span><span class="p">,</span> <span class="n">bnn_mask</span> <span class="o">=</span> <span class="n">neighbor_deprecated</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_bnn_neighbors</span><span class="o">=</span><span class="n">n_bnn_neighbors</span><span class="p">,</span> <span class="n">n_knn_neighbors</span><span class="o">=</span><span class="n">n_knn_neighbors</span><span class="p">,</span> <span class="n">batch_key</span><span class="o">=</span><span class="n">batch_key</span><span class="p">,</span> <span class="n">batch_pair_list</span><span class="o">=</span><span class="n">batch_pair_list</span><span class="p">)</span>
         <span class="n">logg</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;smoothing...&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">logg</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;using scvelo neighbors...&quot;</span><span class="p">)</span>
@@ -416,8 +416,59 @@ document.write(`
         <span class="c1"># 计算相关矩阵</span>
         <span class="n">all_index_list</span><span class="p">,</span> <span class="n">v_bool_array</span> <span class="o">=</span> <span class="n">get_all_index_list</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">index_list</span><span class="p">)</span>
         <span class="n">w_adjust_normal_list</span> <span class="o">=</span> <span class="n">get_w_adjust_normal_list</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">all_index_list</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">knn_mask</span><span class="p">,</span> <span class="n">bnn_mask</span><span class="p">,</span> <span class="n">subsample_adata</span></div>
+        <span class="k">return</span> <span class="n">knn_mask</span><span class="p">,</span> <span class="n">bnn_mask</span><span class="p">,</span> <span class="n">subsample_adata</span>
     
+
+<span class="c1"># 预处理调参</span>
+<span class="k">def</span> <span class="nf">preprocess2</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_bnn_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_knn_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">batch_mode</span><span class="o">=</span><span class="s2">&quot;batch&quot;</span><span class="p">,</span> <span class="n">batch_key</span><span class="o">=</span><span class="s2">&quot;batch&quot;</span><span class="p">,</span> <span class="n">batch_pair_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_mode</span><span class="o">=</span><span class="s2">&quot;random&quot;</span><span class="p">,</span> <span class="n">is_ot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ratio_knn</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ratio_bnn</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,):</span>
+
+    <span class="c1"># TODO: 这里的预处理尝试更改</span>
+    <span class="c1"># scv.pp.filter_and_normalize(adata, min_shared_counts=20, n_top_genes=2000)</span>
+    <span class="c1"># 使用scanpy预处理</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;使用scanpy包的预处理&quot;</span><span class="p">)</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">normalize_total</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">target_sum</span><span class="o">=</span><span class="mf">1e4</span><span class="p">)</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">highly_variable_genes</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_top_genes</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+    <span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[:,</span> <span class="n">adata</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">highly_variable</span><span class="p">]</span> <span class="c1"># 这一步由于参数引用不会改变你原本参数</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span> <span class="c1"># 这一步很对于结果关键</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">batch_mode</span> <span class="o">==</span> <span class="s2">&quot;batch&quot;</span><span class="p">:</span>
+        <span class="c1"># 批次间单独建立邻居</span>
+        <span class="n">batch_pair_list</span> <span class="o">=</span> <span class="n">neighbor</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_bnn_neighbors</span><span class="o">=</span><span class="n">n_bnn_neighbors</span><span class="p">,</span> <span class="n">n_knn_neighbors</span><span class="o">=</span><span class="n">n_knn_neighbors</span><span class="p">,</span> <span class="n">batch_key</span><span class="o">=</span><span class="n">batch_key</span><span class="p">,</span> <span class="n">batch_pair_list</span><span class="o">=</span><span class="n">batch_pair_list</span><span class="p">,</span> <span class="n">is_ot</span><span class="o">=</span><span class="n">is_ot</span><span class="p">,</span> <span class="n">ratio_knn</span><span class="o">=</span><span class="n">ratio_knn</span><span class="p">,</span> <span class="n">ratio_bnn</span><span class="o">=</span><span class="n">ratio_bnn</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logg</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;using scvelo neighbors...&quot;</span><span class="p">)</span>
+    <span class="n">scv</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">moments</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_pcs</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_bnn_neighbors</span> <span class="o">+</span> <span class="n">n_knn_neighbors</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sample_mode</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">adata</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># 执行抽样</span>
+        <span class="n">subsample_adata</span><span class="p">,</span> <span class="n">index_list</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">sample_mode</span><span class="p">)</span>
+        <span class="c1"># 计算相关矩阵</span>
+        <span class="n">all_index_list</span><span class="p">,</span> <span class="n">v_bool_array</span> <span class="o">=</span> <span class="n">get_all_index_list</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">index_list</span><span class="p">)</span>
+        <span class="n">w_adjust_normal_list</span> <span class="o">=</span> <span class="n">get_w_adjust_normal_list</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">all_index_list</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">subsample_adata</span><span class="p">,</span> <span class="n">adata</span>
+
+
+<div class="viewcode-block" id="preprocess"><a class="viewcode-back" href="../../../generated/velovgi.preprocessing.preprocess.html#velovgi.preprocessing.preprocess">[docs]</a><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_bnn_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_knn_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">batch_mode</span><span class="o">=</span><span class="s2">&quot;batch&quot;</span><span class="p">,</span> <span class="n">batch_key</span><span class="o">=</span><span class="s2">&quot;batch&quot;</span><span class="p">,</span> <span class="n">batch_pair_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_mode</span><span class="o">=</span><span class="s2">&quot;random&quot;</span><span class="p">,</span> <span class="n">is_ot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ratio_knn</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ratio_bnn</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,):</span>
+
+    <span class="n">scv</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">filter_and_normalize</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">min_shared_counts</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_top_genes</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">batch_mode</span> <span class="o">==</span> <span class="s2">&quot;batch&quot;</span><span class="p">:</span>
+        <span class="c1"># 批次间单独建立邻居</span>
+        <span class="n">batch_pair_list</span> <span class="o">=</span> <span class="n">neighbor</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_bnn_neighbors</span><span class="o">=</span><span class="n">n_bnn_neighbors</span><span class="p">,</span> <span class="n">n_knn_neighbors</span><span class="o">=</span><span class="n">n_knn_neighbors</span><span class="p">,</span> <span class="n">batch_key</span><span class="o">=</span><span class="n">batch_key</span><span class="p">,</span> <span class="n">batch_pair_list</span><span class="o">=</span><span class="n">batch_pair_list</span><span class="p">,</span> <span class="n">is_ot</span><span class="o">=</span><span class="n">is_ot</span><span class="p">,</span> <span class="n">ratio_knn</span><span class="o">=</span><span class="n">ratio_knn</span><span class="p">,</span> <span class="n">ratio_bnn</span><span class="o">=</span><span class="n">ratio_bnn</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logg</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;using scvelo neighbors...&quot;</span><span class="p">)</span>
+    <span class="n">scv</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">moments</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_pcs</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_bnn_neighbors</span> <span class="o">+</span> <span class="n">n_knn_neighbors</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sample_mode</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> 
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># 执行抽样</span>
+        <span class="n">subsample_adata</span><span class="p">,</span> <span class="n">index_list</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">sample_mode</span><span class="p">)</span>
+        <span class="c1"># 计算相关矩阵</span>
+        <span class="n">all_index_list</span><span class="p">,</span> <span class="n">v_bool_array</span> <span class="o">=</span> <span class="n">get_all_index_list</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">index_list</span><span class="p">)</span>
+        <span class="n">w_adjust_normal_list</span> <span class="o">=</span> <span class="n">get_w_adjust_normal_list</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">all_index_list</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">subsample_adata</span></div>
+
 
 <span class="c1"># review里的批次整合方法</span>
 <span class="k">def</span> <span class="nf">review_preprocess</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">batch_key</span><span class="p">,</span>
@@ -536,16 +587,12 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -594,8 +641,8 @@ By Read the Docs team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -18,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -48,8 +48,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -91,6 +92,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -151,13 +161,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Example Jupyter Book for Read the Docs - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Example Jupyter Book for Read the Docs - Home"/>`);</script>
   
   
 </a></div>
@@ -185,6 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../generated/velovgi.tl.html">velovgi.tl</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.tl.lineage_recluster.html">velovgi.tl.lineage_recluster</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../generated/velovgi.tl.metric.html">velovgi.tl.metric</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../generated/velovgi.tl.metric.batch_eval_utils.html">velovgi.tl.metric.batch_eval_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../generated/velovgi.tl.metric.eval_utils.html">velovgi.tl.metric.eval_utils</a></li>
@@ -332,10 +344,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -343,7 +355,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -375,6 +387,11 @@ document.write(`
   <h1>Source code for velovgi.tools.output</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch_geometric</span> <span class="kn">import</span> <span class="n">seed_everything</span>
+
+<span class="kn">import</span> <span class="nn">anndata</span> <span class="k">as</span> <span class="nn">ad</span>
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="kn">import</span> <span class="nn">scanpy.external</span> <span class="k">as</span> <span class="nn">sce</span>
 
 <div class="viewcode-block" id="add_velovi_outputs_to_adata"><a class="viewcode-back" href="../../../generated/velovgi.tools.add_velovi_outputs_to_adata.html#velovgi.tools.add_velovi_outputs_to_adata">[docs]</a><span class="k">def</span> <span class="nf">add_velovi_outputs_to_adata</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">vae</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Add velocity/rate/t from model to adata</span>
@@ -404,6 +421,71 @@ document.write(`
     <span class="p">)</span> <span class="o">*</span> <span class="n">scaling</span>
     <span class="n">adata</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s2">&quot;fit_t&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">latent_time</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="n">scaling</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span>
     <span class="n">adata</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="s1">&#39;fit_scaling&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span></div>
+
+<span class="c1"># def get_latent_umap(adata, model, cluster_key=&quot;clusters&quot;, batch_key=&quot;batch_key&quot;, latent_key=&quot;X_latent_umap&quot;, random_seed=0):</span>
+<span class="c1">#     # 提取隐变量，构造AnnData</span>
+<span class="c1">#     latent_representation = model.get_latent_representation(adata)</span>
+<span class="c1">#     latent_adata = ad.AnnData(latent_representation)</span>
+<span class="c1">#     if random_seed:</span>
+<span class="c1">#         from torch_geometric import seed_everything</span>
+<span class="c1">#         seed = 0</span>
+<span class="c1">#         seed_everything(seed)</span>
+<span class="c1">#     # 执行scanpy的umap</span>
+<span class="c1">#     latent_adata.obsm[&quot;X_pca&quot;] = latent_adata.X.copy()</span>
+<span class="c1">#     sc.pp.neighbors(latent_adata)</span>
+<span class="c1">#     sc.tl.umap(latent_adata)</span>
+<span class="c1">#     # 保存结果</span>
+<span class="c1">#     adata.obsm[latent_key] = latent_adata.obsm[&quot;X_umap&quot;]</span>
+<span class="c1">#     return adata</span>
+
+<span class="c1"># def get_latent_umap(adata, model, latent_key=&quot;X_latent&quot;, latent_umap_key=&quot;X_latent_umap&quot;, random_seed=0):</span>
+<span class="c1">#     # 提取隐变量，构造AnnData</span>
+<span class="c1">#     latent_representation = model.get_latent_representation(adata)</span>
+<span class="c1">#     latent_adata = ad.AnnData(latent_representation)</span>
+<span class="c1">#     if random_seed:</span>
+<span class="c1">#         seed_everything(random_seed)</span>
+<span class="c1">#     # 执行scanpy的umap</span>
+<span class="c1">#     latent_adata.obsm[&quot;X_pca&quot;] = latent_adata.X.copy()</span>
+<span class="c1">#     sc.pp.neighbors(latent_adata)</span>
+<span class="c1">#     sc.tl.umap(latent_adata)</span>
+<span class="c1">#     # 保存结果</span>
+<span class="c1">#     adata.obsm[latent_key] = latent_representation</span>
+<span class="c1">#     adata.obsm[latent_umap_key] = latent_adata.obsm[&quot;X_umap&quot;]</span>
+<span class="c1">#     return adata</span>
+
+
+<span class="c1"># 向后兼容</span>
+<span class="k">def</span> <span class="nf">get_latent_umap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">latent_key</span><span class="o">=</span><span class="s2">&quot;X_latent&quot;</span><span class="p">,</span> <span class="n">latent_umap_key</span><span class="o">=</span><span class="s2">&quot;X_latent_umap&quot;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">get_latent_embedding</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">embedding_method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span><span class="n">latent_key</span><span class="o">=</span><span class="n">latent_key</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="n">random_seed</span><span class="p">)</span>
+
+
+<span class="c1"># 指定方法对隐变量降维</span>
+<span class="k">def</span> <span class="nf">get_latent_embedding</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">embedding_method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span><span class="n">latent_key</span><span class="o">=</span><span class="s2">&quot;X_latent&quot;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">latent_embedding_key</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">latent_key</span><span class="p">,</span> <span class="n">embedding_method</span><span class="p">)</span>
+    <span class="c1"># 提取隐变量，构造AnnData</span>
+    <span class="n">latent_representation</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_latent_representation</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+    <span class="n">latent_adata</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">AnnData</span><span class="p">(</span><span class="n">latent_representation</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">random_seed</span><span class="p">:</span>
+        <span class="n">seed_everything</span><span class="p">(</span><span class="n">random_seed</span><span class="p">)</span>
+    
+    <span class="c1"># 选择降维方法对隐变量降维</span>
+    <span class="k">if</span> <span class="n">embedding_method</span><span class="o">==</span><span class="s2">&quot;umap&quot;</span><span class="p">:</span>
+        <span class="c1"># 执行scanpy的umap</span>
+        <span class="n">latent_adata</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s2">&quot;X_pca&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">latent_adata</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">latent_adata</span><span class="p">)</span>
+        <span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">latent_adata</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">embedding_method</span><span class="o">==</span><span class="s2">&quot;pca&quot;</span><span class="p">:</span>
+        <span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">latent_adata</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">embedding_method</span><span class="o">==</span><span class="s2">&quot;tsne&quot;</span><span class="p">:</span>
+        <span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">tsne</span><span class="p">(</span><span class="n">latent_adata</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">embedding_method</span><span class="o">==</span><span class="s2">&quot;phate&quot;</span><span class="p">:</span>
+        <span class="n">sce</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">phate</span><span class="p">(</span><span class="n">latent_adata</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_seed</span><span class="p">)</span>
+        
+    <span class="c1"># 保存结果</span>
+    <span class="n">adata</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="n">latent_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">latent_representation</span>
+    <span class="n">adata</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="n">latent_embedding_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">latent_adata</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s2">&quot;X_</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">embedding_method</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">adata</span>
+
 </pre></div>
 
                 </article>
@@ -411,16 +493,12 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -469,8 +547,8 @@ By Read the Docs team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>

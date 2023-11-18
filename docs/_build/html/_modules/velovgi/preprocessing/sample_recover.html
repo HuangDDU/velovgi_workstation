@@ -18,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -48,8 +48,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -91,6 +92,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -151,13 +161,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Example Jupyter Book for Read the Docs - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Example Jupyter Book for Read the Docs - Home"/>`);</script>
   
   
 </a></div>
@@ -185,6 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../generated/velovgi.tl.html">velovgi.tl</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/velovgi.tl.lineage_recluster.html">velovgi.tl.lineage_recluster</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../generated/velovgi.tl.metric.html">velovgi.tl.metric</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../generated/velovgi.tl.metric.batch_eval_utils.html">velovgi.tl.metric.batch_eval_utils</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../generated/velovgi.tl.metric.eval_utils.html">velovgi.tl.metric.eval_utils</a></li>
@@ -332,10 +344,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -343,7 +355,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -497,7 +509,7 @@ document.write(`
     <span class="k">return</span> <span class="n">all_index_list</span><span class="p">,</span> <span class="n">v_bool_array</span>
 
 
-<span class="k">def</span> <span class="nf">get_w_adjust_normal_list</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">all_index_list</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_w_adjust_normal_list_deprecated</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">all_index_list</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">w</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">obsp</span><span class="p">[</span><span class="s2">&quot;connectivities&quot;</span><span class="p">]</span>
     <span class="n">w_adjust_normal_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -519,9 +531,34 @@ document.write(`
         <span class="n">w_adjust_normal</span> <span class="o">=</span> <span class="n">inv_d_adjust</span> <span class="o">@</span> <span class="n">w_adjust</span>  <span class="c1"># 归一化的权重矩阵</span>
         <span class="c1"># print(w_adjust_normal.A)</span>
         <span class="n">w_adjust_normal_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w_adjust_normal</span><span class="p">)</span>
-        <span class="n">adata</span><span class="o">.</span><span class="n">uns</span><span class="p">[</span><span class="s2">&quot;sample_recover&quot;</span><span class="p">][</span><span class="s2">&quot;w_adjust_normal_list&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">w_adjust_normal_list</span>
 
-        <span class="c1"># print(&quot;===============&quot;)</span>
+    <span class="n">adata</span><span class="o">.</span><span class="n">uns</span><span class="p">[</span><span class="s2">&quot;sample_recover&quot;</span><span class="p">][</span><span class="s2">&quot;w_adjust_normal_list&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">w_adjust_normal_list</span>
+    <span class="c1"># print(&quot;===============&quot;)</span>
+
+    <span class="k">return</span> <span class="n">w_adjust_normal_list</span>
+
+<span class="c1"># 这里改进了，使用展开的矩阵</span>
+<span class="k">def</span> <span class="nf">get_w_adjust_normal_list</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">all_index_list</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">obsp</span><span class="p">[</span><span class="s2">&quot;connectivities&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">A</span>
+    <span class="n">w_adjust_normal_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">tmp_index_list</span> <span class="ow">in</span> <span class="n">all_index_list</span><span class="p">:</span>
+        <span class="n">w_adjust</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># 调整的权重矩阵</span>
+        <span class="n">inv_d_adjust</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># 调整的权重矩阵对应度矩阵求逆</span>
+
+        <span class="n">w_adjust</span><span class="p">[:,</span> <span class="n">tmp_index_list</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span><span class="p">[:,</span> <span class="n">tmp_index_list</span><span class="p">]</span>  <span class="c1"># 没有恢复过的细胞进行聚合</span>
+        <span class="n">w_adjust</span><span class="p">[</span><span class="n">tmp_index_list</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 恢复过的细胞保持不变</span>
+        <span class="n">w_adjust</span><span class="p">[</span><span class="n">tmp_index_list</span><span class="p">,</span> <span class="n">tmp_index_list</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="n">inv_degree_array</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">w_adjust</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">inv_d_adjust</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">inv_degree_array</span>  <span class="c1"># 度矩阵取逆</span>
+
+        <span class="n">w_adjust_normal</span> <span class="o">=</span> <span class="n">inv_d_adjust</span> <span class="o">@</span> <span class="n">w_adjust</span>  <span class="c1"># 归一化的权重矩阵</span>
+        <span class="n">w_adjust_normal</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">w_adjust_normal</span><span class="p">)</span>
+        <span class="n">w_adjust_normal_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w_adjust_normal</span><span class="p">)</span>
+
+    <span class="n">adata</span><span class="o">.</span><span class="n">uns</span><span class="p">[</span><span class="s2">&quot;sample_recover&quot;</span><span class="p">][</span><span class="s2">&quot;w_adjust_normal_list&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">w_adjust_normal_list</span>
 
     <span class="k">return</span> <span class="n">w_adjust_normal_list</span>
 
@@ -590,16 +627,12 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -648,8 +681,8 @@ By Read the Docs team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>

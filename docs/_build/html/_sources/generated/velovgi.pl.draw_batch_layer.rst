@@ -1,4 +1,4 @@
-velovgi.pl.draw\_batch\_layer
+﻿velovgi.pl.draw\_batch\_layer
 =============================
 
 .. automodule:: velovgi.pl.draw_batch_layer
@@ -15,6 +15,7 @@ velovgi.pl.draw\_batch\_layer
    
       draw_batch_layer
       draw_batch_layer_embedding
+      draw_batch_layer_embedding_3d
       draw_edge
       draw_velocity
       get_tranformed_batch_embeeding
