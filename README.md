@@ -9,6 +9,10 @@ You are suggested to reproduce the conda environment with `velovgi.yml` using th
 ```bash
 conda env create -f velovgi.yml 
 ```
+You can get the packages also by pip command:
+```
+pip install velovgi
+```
 The main packages version are as following :
 ```
 # Optimal Transportation
@@ -30,9 +34,8 @@ velovi==0.2.0
 
 ## Quick start
 
-We provide a jupyter notebook for users to quickly understand the use of the tool and the output results.
-```
-```
+We provide a [jupyter notebook](./notebook/erythroid_lineage.ipynb) for users to quickly understand the use of the tool and the output results.
+
 
 ## Reference
 
