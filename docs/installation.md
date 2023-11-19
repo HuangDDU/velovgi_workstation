@@ -1,1 +1,4 @@
 # Installation
+```
+pip install velovgi
+```
