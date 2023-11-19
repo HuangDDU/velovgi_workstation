@@ -7,7 +7,7 @@ from setuptools import setup
 
 setup(
         name="VeloVGI",
-        version="0.0.2",
+        version="0.0.3",
         description="Graph Variational Autoencoder for scRNA-seq velocity",
         author="HuangDDU",
         author_email="hzy554598474@163.com",
