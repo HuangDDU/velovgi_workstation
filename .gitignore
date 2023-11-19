@@ -6,6 +6,8 @@
 # 废弃的README文件
 README_deprecated.md
 
+docs_deprecated
+
 # pip包文件
 build
 dist
