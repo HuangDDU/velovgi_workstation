@@ -1,6 +1,6 @@
 (index)=
 
-# Index
+# VeloVGI
 
 ## 1. Workflow
 
