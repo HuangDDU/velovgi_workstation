@@ -8,4 +8,4 @@
 Graph Variational Autoencoder for scRNA-seq velocity
 
 ## 2. Quickstart 
-![quickstart](../notebook/erythroid_lineage.ipynb)
+
