@@ -6,5 +6,4 @@ root: index
 parts:
 - caption: MAIN
   chapters:
-  - file: index
   - file: quickstart
