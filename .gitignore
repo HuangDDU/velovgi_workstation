@@ -6,7 +6,9 @@
 # 废弃的README文件
 README_deprecated.md
 
+# 废弃的docs和docs生成后的结果
 docs_deprecated
+docs/_build
 
 # pip包文件
 build
