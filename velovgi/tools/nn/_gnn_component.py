@@ -78,14 +78,13 @@ class GNN_Layers(nn.Module):
         cat_dim = sum(self.n_cat_list)
 
         # TODO: 根据参数选择图卷积层
-        GNNConv = None
         if nn_type == "GCN":
-            GNNConv = GCNConv
+            self.nn = GCNConv
         elif nn_type == "GAT":
-            GNNConv = GATConv
+            self.nn = GATConv
         else:
-            # 以后再加入一些其他的卷积层
-            pass
+            self.nn = nn.Linear
+
         # print("GNN卷积方式:", GNNConv)
         self.gnn_layers = nn.Sequential(
             collections.OrderedDict(
@@ -94,7 +93,7 @@ class GNN_Layers(nn.Module):
                         f"Layer {i}",
                         nn.Sequential(
                             # TODO: 此处选择的卷积层即可
-                            GNNConv(
+                            self.nn(
                                 n_in + cat_dim * self.inject_into_layer(i),
                                 n_out,
                                 bias=bias,
@@ -207,16 +206,6 @@ class GNN_Layers(nn.Module):
                             else:
                                 one_hot_cat_list_layer = one_hot_cat_list
                             x = torch.cat((x, *one_hot_cat_list_layer), dim=-1)
-                            # TODO: 此处NN加了图结构
-                            # if not (x.device.type == "cuda" and edge_index.device.type == "cuda" and edge_weight.device.type == "cuda"):
-                            #     # 后面提取latent representation时可能会出错，都转化为cpu
-                            #     print("图结构转化为cpu")
-                            #     x = x.cpu()
-                            #     edge_index = edge_index.cpu()
-                            #     edge_weight = edge_weight.cpu()
-                            # else:
-                            #     # print("图结构保持为gpu")
-                            #     pass
                             x = layer(x, edge_index, edge_weight)
                         else:
                             x = layer(x)  # 其他层直接输出即可
@@ -279,7 +268,8 @@ class GNN_Encoder(nn.Module):
         self.distribution = distribution
         self.var_eps = var_eps
 
-        #
+        self.nn_type = nn_type
+
         self.encoder = GNN_Layers(
             n_in=n_input,
             n_out=n_hidden,
@@ -292,17 +282,15 @@ class GNN_Encoder(nn.Module):
         )
         # 均值和方差也是需要重新选择
         # TODO: 根据参数选择图卷积层
-        GNNConv = None
         if nn_type == "GCN":
-            GNNConv = GCNConv
+            self.nn = GCNConv
         elif nn_type == "GAT":
-            GNNConv = GATConv
+            self.nn = GATConv
         else:
-            # 以后再加入一些其他的卷积层
-            pass
+            self.nn = nn.Linear
         # print("GNN_Encoder上GNN卷积方式:", GNNConv)
-        self.mean_encoder = GNNConv(n_hidden, n_output)
-        self.var_encoder = GNNConv(n_hidden, n_output)
+        self.mean_encoder = self.nn(n_hidden, n_output)
+        self.var_encoder = self.nn(n_hidden, n_output)
         self.return_dist = return_dist
 
         if distribution == "ln":
@@ -339,8 +327,14 @@ class GNN_Encoder(nn.Module):
         # Parameters for latent distribution
         # TODO: 此处添加了图结构的输入
         q = self.encoder(x, edge_index, edge_weight, *cat_list)
-        q_m = self.mean_encoder(q, edge_index, edge_weight)
-        q_v = self.var_activation(self.var_encoder(q, edge_index, edge_weight)) + self.var_eps
+        if not self.nn == nn.Linear:
+            # GCN，GAT
+            q_m = self.mean_encoder(q, edge_index, edge_weight)
+            q_v = self.var_activation(self.var_encoder(q, edge_index, edge_weight)) + self.var_eps
+        else:
+            # FC
+            q_m = self.mean_encoder(q)
+            q_v = self.var_activation(self.var_encoder(q)) + self.var_eps
         dist = Normal(q_m, q_v.sqrt())
         latent = self.z_transformation(dist.rsample())
         if self.return_dist:
@@ -379,9 +373,19 @@ if __name__=="__main__":
         nn_type="GAT"
     )
     print("GAT构造完成", z_encode_gat)
+    z_encode_fc = GNN_Encoder(
+        n_input_encoder,
+        n_latent,
+        n_layers=n_layers,
+        n_hidden=n_hidden,
+        nn_type="FC"
+    )
+    print("FC构造完成", z_encode_gat)
 
     # 执行正向传播
     output = z_encode_gcn(X, edge_index, edge_weight)
     print("GCN输出", output)
     output = z_encode_gcn(X, edge_index, edge_weight)
     print("GAT输出", output)
+    output = z_encode_fc(X, edge_index, edge_weight)
+    print("FC输出", output)
