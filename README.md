@@ -41,6 +41,17 @@ We provide a [jupyter notebook](./notebook/erythroid_lineage.ipynb) for users to
 
 ## Reference
 
-The paper of the work is under review. You can cite our work with the following methods.
+The paper of the work is published by [link](https://bmcbiol.biomedcentral.com/articles/10.1186/s12915-024-02085-8). You can cite our work with the following methods.
+
 ```
+@article{huang2024accurate,
+  title={Accurate RNA velocity estimation based on multibatch network reveals complex lineage in batch scRNA-seq data},
+  author={Huang, Zhaoyang and Guo, Xinyang and Qin, Jie and Gao, Lin and Ju, Fen and Zhao, Chenguang and Yu, Liang},
+  journal={BMC biology},
+  volume={22},
+  number={1},
+  pages={290},
+  year={2024},
+  publisher={Springer}
+}
 ```
